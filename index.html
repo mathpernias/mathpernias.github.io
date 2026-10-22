@@ -3,75 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathis Pernias | Data Analyst</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray-bg: #f1f5f9;
-            --text-gray: #64748b;
-        }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; color: #333; line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Nav */
-        .navbar { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
-        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        .nav-menu { list-style: none; display: flex; gap: 20px; }
-        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; }
-        .nav-menu a:hover { color: var(--primary); }
-
-        /* Hero */
-        .hero { background: var(--dark); color: white; padding: 100px 0; text-align: center; }
-        .hero-title { font-size: 3.5rem; margin-bottom: 10px; }
-        .hero-subtitle { font-size: 1.5rem; color: #cbd5e1; margin-bottom: 30px; }
-        .btn { display: inline-block; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: #1d4ed8; }
-        .btn-secondary { background: #e2e8f0; color: #333; }
-
-        /* Sections */
-        .section { padding: 80px 0; }
-        .section-gray { background: var(--gray-bg); }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--dark); }
-
-        /* Projects */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, opacity 0.3s ease; }
-        .projects-grid:hover .project-card { opacity: 0.6; transform: scale(0.95); }
-        .projects-grid:hover .project-card:hover { opacity: 1; transform: scale(1.05); z-index: 10; }
-        .project-video { width: 100%; height: auto; margin: 15px 0; border-radius: 8px; background: #000; cursor: pointer; transition: transform 0.3s ease; }
-        .project-video:hover { transform: scale(2); }
-        .project-tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: #e0f2fe; color: #0284c7; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; }
-
-        /* Timeline */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 2px; background: #e2e8f0; top: 0; bottom: 0; left: 20px; margin-left: -1px; }
-        .timeline-item { padding: 10px 40px; position: relative; margin-bottom: 40px; }
-        .timeline-dot { width: 20px; height: 20px; background: var(--primary); border-radius: 50%; position: absolute; left: 11px; top: 15px; z-index: 10; border: 4px solid white; box-shadow: 0 0 0 2px #e2e8f0; }
-        .timeline-content { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-left: 4px solid var(--primary); }
-        .timeline-date { color: var(--primary); font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        .timeline-title { margin-bottom: 5px; font-size: 1.25rem; }
-        .timeline-company { font-weight: 600; color: var(--text-gray); margin-bottom: 15px; }
-        .timeline-achievements { padding-left: 20px; margin-top: 15px; color: #475569; }
-        .timeline-achievements li { margin-bottom: 8px; }
-
-        /* Contact */
-        .contact-content { text-align: center; }
-        .contact-links { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
-        footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 30px 0; }
-    </style>
+    <title>Mathis Pernias | Data Analyst &amp; Data Engineer</title>
+    <meta name="description" content="Portfolio of Mathis Pernias - Data Analyst at iA Groupe financier. I build secure, reliable data pipelines and turn data into decisions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="progress"></div>
+
     <nav class="navbar">
         <div class="container">
-            <h1 class="logo">MP</h1>
+            <a href="#home" class="logo"><span class="logo-mark">MP</span> Mathis Pernias</a>
+            <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#stories">Featured Work</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -79,154 +28,301 @@
         </div>
     </nav>
 
-    <section id="home" class="hero">
+    <!-- ===================== HERO ===================== -->
+    <header id="home" class="hero">
+        <canvas id="network"></canvas>
         <div class="container">
-            <h1 class="hero-title">Mathis Pernias</h1>
-            <p class="hero-subtitle">Data Analyst at iA Groupe financier | Data Engineering & Analytics</p>
-            <a href="#projects" class="btn btn-primary">View My Work</a>
-        </div>
-    </section>
+            <div>
+                <div class="eyebrow"><span class="pulse"></span> Data Analyst @ iA Groupe financier - Montr&eacute;al</div>
+                <h1 class="hero-title">Hi, I'm <span class="grad-text">Mathis Pernias</span></h1>
+                <p class="hero-subtitle">
+                    I turn raw data into <strong>trusted, secure and useful</strong> information that teams
+                    can act on. Right now I focus on <span class="typing" id="typed"></span><span class="caret"></span>
+                </p>
+                <div class="hero-cta">
+                    <a href="#stories" class="btn btn-primary">See what I've built &rarr;</a>
+                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                </div>
+            </div>
 
+            <div class="hero-art">
+                <div class="chip-float a">Cloud</div>
+                <div class="chip-float b">Security</div>
+                <div class="chip-float c">AI</div>
+                <div class="glass-card">
+                    <div class="journey-title">The journey of a piece of data</div>
+                    <div class="journey">
+                        <div class="j-step"><span class="j-ico">1</span><div><b>Collect</b><small>from apps, APIs and files</small></div></div>
+                        <div class="j-step"><span class="j-ico">2</span><div><b>Protect</b><small>secrets locked, personal data hidden</small></div></div>
+                        <div class="j-step"><span class="j-ico">3</span><div><b>Verify</b><small>automated tests catch errors early</small></div></div>
+                        <div class="j-step"><span class="j-ico">4</span><div><b>Deliver</b><small>dashboards and decisions</small></div></div>
+                    </div>
+                    <div class="journey-foot">My job: make every step reliable.</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================== STATS ===================== -->
+    <div class="container">
+        <div class="stats reveal">
+            <div class="stat"><div class="stat-num grad-text" data-count="30" data-suffix="%">0</div><div class="stat-label">infrastructure cost reduction</div></div>
+            <div class="stat"><div class="stat-num grad-text" data-count="5" data-suffix="">0</div><div class="stat-label">internships &amp; roles in data</div></div>
+            <div class="stat"><div class="stat-num grad-text" data-count="3" data-suffix="">0</div><div class="stat-label">countries: France, Denmark, Canada</div></div>
+            <div class="stat"><div class="stat-num grad-text" data-count="2" data-suffix="">0</div><div class="stat-label">engineering &amp; master's degrees</div></div>
+        </div>
+    </div>
+
+    <!-- ===================== ABOUT ===================== -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p>
-                    I am a data analyst at <strong>iA Groupe financier</strong>, where I work on reliable,
-                    secure data platforms and analytics pipelines. I graduated in August 2026 with a
-                    professional Master's degree in Computer Engineering from <strong>Polytechnique Montréal</strong>.
-                </p>
-                <br>
-                <p>
-                    My interests include Data Engineering, Data Quality, Data Vault 2.0, cloud analytics,
-                    and Artificial Intelligence. I enjoy building robust data pipelines, protecting sensitive
-                    information, and turning complex datasets into useful decisions in bilingual environments.
-                </p>
+            <div class="section-head reveal">
+                <div class="kicker">// about</div>
+                <h2 class="section-title">Building the <span class="grad-text">pipes</span> that make data useful</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>
+                        Companies produce huge amounts of data, but it is only valuable if it is <strong>correct,
+                        protected and easy to use</strong>. That is what I work on every day as a data analyst at
+                        <strong>iA Groupe financier</strong>, one of Canada's major insurance and wealth management companies.
+                    </p>
+                    <p>
+                        I graduated in August 2026 with a professional Master's in Computer Engineering from
+                        <strong>Polytechnique Montr&eacute;al</strong> and an engineering degree in Data Science &amp; AI from
+                        <strong>T&eacute;l&eacute;com Physique Strasbourg</strong>. I work comfortably in French and English.
+                    </p>
+                </div>
+                <div class="skills reveal delay-1">
+                    <div class="skill-box"><h4>Build</h4><p>Automated data pipelines on Azure and Snowflake, written in SQL and Python</p></div>
+                    <div class="skill-box"><h4>Protect</h4><p>Secrets management, access control, anonymisation of personal data</p></div>
+                    <div class="skill-box"><h4>Verify</h4><p>Automated tests and CI so errors are found before users see them</p></div>
+                    <div class="skill-box"><h4>Understand</h4><p>Dashboards, analytics, and machine learning including RAG chatbots</p></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section section-gray">
+    <!-- ===================== FEATURED STORIES ===================== -->
+    <section id="stories" class="section">
         <div class="container">
-            <h2 class="section-title">Key Projects</h2>
+            <div class="section-head reveal">
+                <div class="kicker">// featured work</div>
+                <h2 class="section-title">Three things I'm <span class="grad-text">proud of</span></h2>
+                <p class="section-lead">Real work done at iA: what the problem was, what I did, and what changed.</p>
+            </div>
+
+            <!-- Story 1 : Security -->
+            <article class="story reveal" style="--glow: rgba(244,63,94,0.2)">
+                <div class="story-info">
+                    <div class="story-badge" style="color:#f87171">Security</div>
+                    <h3>Locking passwords in a digital safe</h3>
+                    <div class="psr">
+                        <div><b>The problem</b><p>The login credentials our pipelines use to talk to the call-center platform were stored in plain sight in the tool's settings. Anyone with access could read them.</p></div>
+                        <div><b>What I did</b><p>Moved every credential into a secure vault. Pipelines now ask the vault for access only at the moment they need it, and nothing sensitive is left in the code.</p></div>
+                        <div><b>The result</b><p>No secret exposed anymore, no downtime, and a setup that meets the company's security standards.</p></div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag pk">Azure Key Vault</span><span class="tag pk">OAuth2</span><span class="tag pk">Azure Data Factory</span>
+                    </div>
+                </div>
+                <div class="diagram-card">
+                    <div class="dc-head"><span class="dc-title">before / after</span></div>
+<pre class="mermaid">
+flowchart LR
+  subgraph B["BEFORE"]
+    direction TB
+    S1["Password in plain sight"]:::bad --> P1["Data pipeline"]
+    P1 --> G1["Call-center platform"]
+  end
+  subgraph A["AFTER"]
+    direction TB
+    P2["Data pipeline"] -->|asks permission| KV["Digital safe"]:::ok
+    KV -->|secret, only when needed| P2
+    P2 --> G2["Call-center platform"]
+  end
+  B ~~~ A
+  classDef bad fill:#7f1d1d,stroke:#f87171,color:#fff
+  classDef ok fill:#064e3b,stroke:#34d399,color:#fff
+</pre>
+                </div>
+            </article>
+
+            <!-- Story 2 : Privacy -->
+            <article class="story flip reveal" style="--glow: rgba(244,114,182,0.2)">
+                <div class="diagram-card">
+                    <div class="dc-head"><span class="dc-title">how it works</span></div>
+<pre class="mermaid">
+flowchart LR
+  SRC["Real customer conversations"] --> TOOL["Anonymisation tool"]:::hot
+  RULES["Rules: which fields are personal"] --> TOOL
+  TOOL --> OUT["Safe copy: names, emails, phones replaced"]:::ok
+  OUT --> DEV["Developers and testers"]
+  classDef hot fill:#9d174d,stroke:#f472b6,color:#fff
+  classDef ok fill:#064e3b,stroke:#34d399,color:#fff
+</pre>
+                </div>
+                <div class="story-info">
+                    <div class="story-badge" style="color:#f472b6">Privacy</div>
+                    <h3>Realistic test data, with no real people in it</h3>
+                    <div class="psr">
+                        <div><b>The problem</b><p>To test properly, developers need data that looks real. But copying real customer conversations into test environments puts personal information at risk.</p></div>
+                        <div><b>What I did</b><p>Built a configurable tool that automatically finds and replaces personal details in complex, nested data, driven by simple rules instead of custom code.</p></div>
+                        <div><b>The result</b><p>Teams test on realistic data while customer privacy stays protected.</p></div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag pk">Snowflake</span><span class="tag pk">JSON</span><span class="tag pk">Privacy &amp; compliance</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Story 3 : Cost -->
+            <article class="story reveal" style="--glow: rgba(52,211,153,0.2)">
+                <div class="story-info">
+                    <div class="story-badge" style="color:#34d399">Cost optimisation</div>
+                    <h3>Cutting infrastructure costs by 30%</h3>
+                    <div class="psr">
+                        <div><b>The problem</b><p>Servers that fetch data from external services were sized by guesswork, and nobody knew how much capacity was really needed.</p></div>
+                        <div><b>What I did</b><p>Measured how many requests each service really handles and how many it allows, then built a data-backed sizing recommendation.</p></div>
+                        <div><b>The result</b><p>About 30% lower infrastructure cost, with the same performance.</p></div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag gr">Capacity analysis</span><span class="tag gr">Python</span><span class="tag gr">Azure</span>
+                    </div>
+                </div>
+                <div class="diagram-card">
+                    <div class="dc-head"><span class="dc-title">infrastructure cost</span></div>
+                    <div class="bars">
+                        <div class="bar dim" data-h="80%"><span>100%</span></div>
+                        <div class="bar" data-h="56%"><span>70%</span></div>
+                    </div>
+                    <div class="bar-labels"><div>Before analysis</div><div>After right-sizing</div></div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===================== OTHER PROJECTS ===================== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="kicker">// more projects</div>
+                <h2 class="section-title">Side quests &amp; <span class="grad-text">research</span></h2>
+            </div>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>RAG-based Chatbot (McKesson)</h3>
-                    <p>Developed an internal chatbot using RAMQ drug data to support decision-making and improve information access for business teams.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Snowflake AI</span>
-                        <span class="tag">Azure Lambda</span>
-                        <span class="tag">RAG</span>
+                <div class="project-card reveal">
+                    <div class="cover c1">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="14" width="36" height="26" rx="6"/><path d="M18 40v8l10-8"/><circle cx="20" cy="27" r="2" fill="#fff"/><circle cx="26" cy="27" r="2" fill="#fff"/><circle cx="32" cy="27" r="2" fill="#fff"/><path d="M50 22c4 2 6 6 6 10s-2 8-6 10"/></svg>
+                    </div>
+                    <div class="project-body">
+                        <h3>AI chatbot for drug data</h3>
+                        <p>At McKesson, I built an internal chatbot that answers questions about public drug-coverage data, so teams get answers in seconds instead of digging through tables.</p>
+                        <div class="project-tags"><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Snowflake AI</span></div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <h3>Open Source: datacontract-cli</h3>
-                    <p>Contributed to the GitHub project <code>datacontract-cli</code> to improve data governance, documentation, and pipeline reliability.</p>
-                    <video class="project-video" autoplay muted loop>
-                        <source src="mermaid_demo.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <a href="https://github.com/datacontract/datacontract-cli" target="_blank" class="btn btn-secondary" style="margin-top: 15px; display: inline-block;">View on GitHub</a>
-                    <div class="project-tags">
-                        <span class="tag">Open Source</span>
-                        <span class="tag">Data Quality</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Governance</span>
+
+                <div class="project-card reveal delay-1">
+                    <div class="cover c2">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="16" r="6"/><circle cx="18" cy="48" r="6"/><circle cx="46" cy="32" r="6"/><path d="M18 22v20M24 16c14 0 22 6 22 10M24 48c14 0 22-6 22-10"/></svg>
+                    </div>
+                    <div class="project-body">
+                        <h3>Open source contribution</h3>
+                        <p>Contributed to <code>datacontract-cli</code>, a public tool that helps teams agree on and check the quality of the data they share.</p>
+                        <video class="project-video" autoplay muted loop playsinline>
+                            <source src="mermaid_demo.mp4" type="video/mp4">
+                        </video>
+                        <div class="project-tags"><span class="tag cy">Open Source</span><span class="tag cy">Data quality</span></div>
+                        <a href="https://github.com/datacontract/datacontract-cli" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">View on GitHub</a>
                     </div>
                 </div>
-                <div class="project-card">
-                    <h3>Time-Series Generation with GANs</h3>
-                    <p>Trained a Generative Adversarial Network (GAN) to create synthetic time series data and analyzed output quality and stability.</p>
-                    <div class="project-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Research</span>
+
+                <div class="project-card reveal delay-2">
+                    <div class="cover c3">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34c6 0 6-18 12-18s6 28 12 28 6-22 12-22 6 12 16 12"/><path d="M6 54h52"/></svg>
+                    </div>
+                    <div class="project-body">
+                        <h3>AI that invents realistic data</h3>
+                        <p>Trained a neural network (a GAN) to generate artificial time series that look real, and studied how good and how stable the results are.</p>
+                        <div class="project-tags"><span class="tag pk">PyTorch</span><span class="tag pk">Deep learning</span></div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <h3>Berlin Marathon Dashboard</h3>
-                    <p>Built an interactive Dash and Plotly application to explore Berlin Marathon performances,
-                        weather effects, runner demographics, and top-10 nationality trends across years.</p>
-                    <a href="https://github.com/mathpernias/BerlinMarathonDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top: 15px; display: inline-block;">View on GitHub</a>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Dash</span>
-                        <span class="tag">Plotly</span>
-                        <span class="tag">Data Visualization</span>
+
+                <div class="project-card reveal delay-3">
+                    <div class="cover c4">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 54V30M24 54V16M38 54V36M52 54V22"/><path d="M6 54h52"/></svg>
+                    </div>
+                    <div class="project-body">
+                        <h3>Berlin Marathon dashboard</h3>
+                        <p>An interactive web app to explore how weather, age and nationality affect marathon results across the years.</p>
+                        <div class="project-tags"><span class="tag gr">Dash</span><span class="tag gr">Plotly</span><span class="tag gr">Data viz</span></div>
+                        <a href="https://github.com/mathpernias/BerlinMarathonDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">View on GitHub</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===================== EXPERIENCE ===================== -->
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Experience</h2>
+            <div class="section-head reveal">
+                <div class="kicker">// journey</div>
+                <h2 class="section-title">Experience &amp; <span class="grad-text">education</span></h2>
+            </div>
             <div class="timeline">
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
+                        <span class="timeline-date">AUG 2026 - PRESENT</span>
                         <h3 class="timeline-title">Data Analyst</h3>
-                        <p class="timeline-company">iA Groupe financier - Montréal</p>
-                        <p class="timeline-date">August 2026 - Present</p>
-                        <p class="timeline-description">
-                            Working full time on the CCC and CDI data platforms, with a focus on secure,
-                            reliable analytics pipelines and data quality.
-                        </p>
+                        <p class="timeline-company">iA Groupe financier - Montr&eacute;al</p>
+                        <p class="timeline-description">Full time on the customer data and contact-center platforms, focusing on secure, reliable pipelines and data quality.</p>
                         <ul class="timeline-achievements">
-                            <li>Secured Genesys Cloud OAuth2 secrets by migrating them to Azure Key Vault.</li>
-                            <li>Built configurable anonymization for sensitive semi-structured data in test environments.</li>
-                            <li>Improved Data Vault 2.0 pipelines, marketing campaign mappings, and analytical deduplication.</li>
-                            <li>Analyzed SHIR/API capacity and contributed to a 30% infrastructure cost reduction.</li>
+                            <li>Moved API credentials into Azure Key Vault.</li>
+                            <li>Built configurable anonymisation of sensitive data for test environments.</li>
+                            <li>Improved pipeline reliability, marketing campaign mappings and duplicate handling.</li>
+                            <li>Analysed server and API capacity, contributing to a 30% infrastructure cost reduction.</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
+                        <span class="timeline-date">JAN 2026 - AUG 2026</span>
                         <h3 class="timeline-title">Final-Year Data Analyst Intern</h3>
-                        <p class="timeline-company">iA Groupe financier - Montréal</p>
-                        <p class="timeline-date">January 2026 - August 2026</p>
-                        <p class="timeline-description">
-                            Completed my final-year internship with the Minions data team across the CCC and CDI platforms.
-                        </p>
+                        <p class="timeline-company">iA Groupe financier - Montr&eacute;al</p>
+                        <p class="timeline-description">Final-year internship with the data team.</p>
                         <ul class="timeline-achievements">
-                            <li>Worked with Azure Data Factory, Snowflake, Azure Key Vault, and Data Vault 2.0.</li>
-                            <li>Delivered improvements to security, test-data compliance, data quality, and pipeline reliability.</li>
+                            <li>Worked with Azure Data Factory, Snowflake and Azure Key Vault.</li>
+                            <li>Delivered improvements to security, test-data compliance and data quality.</li>
                         </ul>
                     </div>
                 </div>
-                
-                <div class="timeline-item">
+
+                <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3 class="timeline-title">Data Engineering & AI Intern</h3>
-                        <p class="timeline-company">McKesson (DataHub Team) - Montréal</p>
-                        <p class="timeline-date">May 2025 - Aug 2025</p>
-                        <p class="timeline-description">
-                            Built and validated data pipelines supporting analytics and AI use cases.
-                        </p>
+                        <span class="timeline-date">MAY 2025 - AUG 2025</span>
+                        <h3 class="timeline-title">Data Engineering &amp; AI Intern</h3>
+                        <p class="timeline-company">McKesson (DataHub Team) - Montr&eacute;al</p>
+                        <p class="timeline-description">Built and validated data pipelines supporting analytics and AI use cases.</p>
                         <ul class="timeline-achievements">
-                            <li>Developed a RAG-based chatbot using RAMQ drug data.</li>
+                            <li>Developed a RAG-based chatbot using drug data.</li>
                             <li>Automated tests and integrated them into Git/CI workflows.</li>
                             <li>Built Power BI dashboards for KPI tracking and monitored error rates.</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
+                        <span class="timeline-date">MAY 2024 - AUG 2024</span>
                         <h3 class="timeline-title">Research Intern (Data Science)</h3>
                         <p class="timeline-company">Maersk Mc-Kinney Moller Institute - Denmark</p>
-                        <p class="timeline-date">May 2024 - Aug 2024</p>
-                        <p class="timeline-description">
-                            Conducted analytical studies and built predictive models on simulation-based datasets (SIR).
-                        </p>
+                        <p class="timeline-description">Analytical studies and predictive models on simulated epidemic data.</p>
                         <ul class="timeline-achievements">
                             <li>Developed supervised models using Decision Trees (Python, Julia).</li>
                             <li>Communicated findings through structured summaries and project reviews.</li>
@@ -234,43 +330,37 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
+                        <span class="timeline-date">JUNE 2023</span>
                         <h3 class="timeline-title">Systems Engineering Intern</h3>
                         <p class="timeline-company">INRIA (CAMUS Team) - Strasbourg</p>
-                        <p class="timeline-date">June 2023</p>
-                        <p class="timeline-description">
-                            Implemented automated load-balancing computation for multi-threaded workloads.
-                        </p>
+                        <p class="timeline-description">Automated load-balancing computation for multi-threaded workloads.</p>
                         <ul class="timeline-achievements">
                             <li>Performance diagnostics on multi-core architectures.</li>
-                            <li>Technologies used: C, Bash, Python.</li>
+                            <li>Technologies: C, Bash, Python.</li>
                         </ul>
                     </div>
                 </div>
 
-                 <div class="timeline-item">
+                <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3 class="timeline-title">Master's in Computer Engineering - Graduated</h3>
-                        <p class="timeline-company">Polytechnique Montréal</p>
-                        <p class="timeline-date">2024 - August 2026</p>
-                        <p class="timeline-description">
-                            Professional Master's degree, modular program, specializing in Data Engineering and Analytics.
-                        </p>
+                        <span class="timeline-date">2024 - AUG 2026</span>
+                        <h3 class="timeline-title">Master's in Computer Engineering</h3>
+                        <p class="timeline-company">Polytechnique Montr&eacute;al</p>
+                        <p class="timeline-description">Professional Master's degree specialising in Data Engineering and Analytics. Graduated.</p>
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                                <h3 class="timeline-title">Engineering Degree in Data Science & Artificial Intelligence - Graduated</h3>
-                        <p class="timeline-company">Télécom Physique Strasbourg</p>
-                                <p class="timeline-date">2022 - August 2026</p>
-                        <p class="timeline-description">
-                                    Engineering degree specializing in Data Science and Artificial Intelligence.
-                        </p>
+                        <span class="timeline-date">2022 - AUG 2026</span>
+                        <h3 class="timeline-title">Engineering Degree in Data Science &amp; AI</h3>
+                        <p class="timeline-company">T&eacute;l&eacute;com Physique Strasbourg</p>
+                        <p class="timeline-description">Engineering degree specialising in Data Science and Artificial Intelligence. Graduated.</p>
                     </div>
                 </div>
 
@@ -278,24 +368,50 @@
         </div>
     </section>
 
-    <section id="contact" class="section section-gray">
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <p>I'm always interested in hearing about new projects and opportunities in Data Engineering and AI.</p>
+            <div class="contact-box reveal">
+                <div class="kicker">// contact</div>
+                <h2>Let's build something <span class="grad-text">great</span></h2>
+                <p>I'm always interested in new projects and opportunities in Data Engineering and AI.</p>
                 <div class="contact-links">
-                    <a href="mailto:mathis.pernias@gmail.com" class="btn btn-primary">Email Me</a>
-                    <a href="https://github.com/mathpernias" target="_blank" class="btn btn-secondary">GitHub</a>
-                    <a href="https://www.linkedin.com/in/mathis-pernias-74a640199/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                    <a href="mailto:mathis.pernias@gmail.com" class="btn btn-primary">Email me</a>
+                    <a href="https://github.com/mathpernias" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+                    <a href="https://www.linkedin.com/in/mathis-pernias-74a640199/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mathis Pernias. All rights reserved.</p>
-        </div>
+    <footer>
+        <div class="container"><p>&copy; 2026 Mathis Pernias. Built with care in Montr&eacute;al.</p></div>
     </footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'strict',
+            flowchart: { curve: 'basis', htmlLabels: true, padding: 12 },
+            themeVariables: {
+                fontFamily: 'Inter, Segoe UI, sans-serif',
+                fontSize: '14px',
+                background: 'transparent',
+                primaryColor: '#1e293b',
+                primaryTextColor: '#e6eaf5',
+                primaryBorderColor: '#6366f1',
+                lineColor: '#94a3b8',
+                secondaryColor: '#0f172a',
+                tertiaryColor: '#0b1121',
+                clusterBkg: 'rgba(255,255,255,0.03)',
+                clusterBorder: 'rgba(255,255,255,0.18)',
+                edgeLabelBackground: '#0b1121',
+                titleColor: '#e6eaf5'
+            }
+        });
+    </script>
 </body>
 </html>
