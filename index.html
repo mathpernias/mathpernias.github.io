@@ -20,6 +20,7 @@
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#toolbox">Toolbox</a></li>
                 <li><a href="#stories">Featured Work</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -52,10 +53,10 @@
                 <div class="glass-card">
                     <div class="journey-title">The journey of a piece of data</div>
                     <div class="journey">
-                        <div class="j-step"><span class="j-ico">1</span><div><b>Collect</b><small>from apps, APIs and files</small></div></div>
-                        <div class="j-step"><span class="j-ico">2</span><div><b>Protect</b><small>secrets locked, personal data hidden</small></div></div>
-                        <div class="j-step"><span class="j-ico">3</span><div><b>Verify</b><small>automated tests catch errors early</small></div></div>
-                        <div class="j-step"><span class="j-ico">4</span><div><b>Deliver</b><small>dashboards and decisions</small></div></div>
+                        <div class="j-step"><span class="j-ico">1</span><div><b>Collect</b><small>from apps, APIs and files</small><em>ETL / ELT &middot; ingestion</em></div></div>
+                        <div class="j-step"><span class="j-ico">2</span><div><b>Protect</b><small>secrets locked, personal data hidden</small><em>IAM &middot; data masking</em></div></div>
+                        <div class="j-step"><span class="j-ico">3</span><div><b>Verify</b><small>automated tests catch errors early</small><em>data quality &middot; CI/CD</em></div></div>
+                        <div class="j-step"><span class="j-ico">4</span><div><b>Deliver</b><small>dashboards and decisions</small><em>data warehouse &middot; BI</em></div></div>
                     </div>
                     <div class="journey-foot">My job: make every step reliable.</div>
                 </div>
@@ -103,12 +104,61 @@
         </div>
     </section>
 
+    <!-- ===================== TOOLBOX ===================== -->
+    <section id="toolbox" class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="kicker">// toolbox</div>
+                <h2 class="section-title">The tools I use <span class="grad-text">daily</span></h2>
+                <p class="section-lead">Each family in one sentence, so you know what it is for.</p>
+            </div>
+            <div class="stack-grid">
+                <div class="stack-card reveal">
+                    <div class="stack-ico">&rarr;</div>
+                    <h3>Ingestion &amp; orchestration</h3>
+                    <p class="cap">Moving data from where it is created to where it is analysed, on a schedule.</p>
+                    <div class="project-tags"><span class="tag">Azure Data Factory</span><span class="tag">ETL / ELT</span><span class="tag">REST APIs</span><span class="tag">Batch &amp; incremental loads</span></div>
+                </div>
+                <div class="stack-card reveal delay-1">
+                    <div class="stack-ico">DB</div>
+                    <h3>Warehouse &amp; modelling</h3>
+                    <p class="cap">Storing data in a clean, structured way so anyone can query it.</p>
+                    <div class="project-tags"><span class="tag cy">Snowflake</span><span class="tag cy">SQL</span><span class="tag cy">Data warehouse</span><span class="tag cy">Data Vault 2.0</span><span class="tag cy">Data marts</span></div>
+                </div>
+                <div class="stack-card reveal delay-2">
+                    <div class="stack-ico">IaC</div>
+                    <h3>Infrastructure &amp; DevOps</h3>
+                    <p class="cap">Describing infrastructure as code and shipping changes safely and repeatably.</p>
+                    <div class="project-tags"><span class="tag pk">Terraform (IaC)</span><span class="tag pk">Azure DevOps</span><span class="tag pk">CI/CD</span><span class="tag pk">GitFlow</span><span class="tag pk">Docker</span></div>
+                </div>
+                <div class="stack-card reveal">
+                    <div class="stack-ico">QA</div>
+                    <h3>Quality &amp; governance</h3>
+                    <p class="cap">Making sure data is correct, traceable and used under clear rules.</p>
+                    <div class="project-tags"><span class="tag gr">pytest</span><span class="tag gr">Data quality tests</span><span class="tag gr">Data contracts</span><span class="tag gr">Data lineage</span><span class="tag gr">Data classification</span></div>
+                </div>
+                <div class="stack-card reveal delay-1">
+                    <div class="stack-ico">&#128274;</div>
+                    <h3>Security &amp; privacy</h3>
+                    <p class="cap">Protecting credentials and personal information end to end.</p>
+                    <div class="project-tags"><span class="tag pk">Azure Key Vault</span><span class="tag pk">Managed identity</span><span class="tag pk">OAuth2</span><span class="tag pk">PII anonymisation</span><span class="tag pk">RBAC</span></div>
+                </div>
+                <div class="stack-card reveal delay-2">
+                    <div class="stack-ico">{ }</div>
+                    <h3>Languages &amp; analytics</h3>
+                    <p class="cap">Scripting, analysis, visualisation and machine learning.</p>
+                    <div class="project-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PowerShell</span><span class="tag">Power BI</span><span class="tag">Plotly / Dash</span><span class="tag">PyTorch</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===================== FEATURED STORIES ===================== -->
     <section id="stories" class="section">
         <div class="container">
             <div class="section-head reveal">
                 <div class="kicker">// featured work</div>
-                <h2 class="section-title">Three things I'm <span class="grad-text">proud of</span></h2>
+                <h2 class="section-title">Four things I'm <span class="grad-text">proud of</span></h2>
                 <p class="section-lead">Real work done at iA: what the problem was, what I did, and what changed.</p>
             </div>
 
@@ -197,6 +247,34 @@ flowchart LR
                         <div class="bar" data-h="56%"><span>70%</span></div>
                     </div>
                     <div class="bar-labels"><div>Before analysis</div><div>After right-sizing</div></div>
+                </div>
+            </article>
+
+            <!-- Story 4 : Docs as code -->
+            <article class="story flip reveal" style="--glow: rgba(99,102,241,0.22)">
+                <div class="diagram-card">
+                    <div class="dc-head"><span class="dc-title">documentation pipeline</span></div>
+<pre class="mermaid">
+flowchart LR
+  W["Write the doc next to the code"] --> PR["Pull request and review"]
+  PR --> M["Merge"]
+  M --> CI["Automated pipeline"]:::hot
+  CI --> SP["Published on SharePoint"]:::ok
+  classDef hot fill:#312e81,stroke:#818cf8,color:#fff
+  classDef ok fill:#064e3b,stroke:#34d399,color:#fff
+</pre>
+                </div>
+                <div class="story-info">
+                    <div class="story-badge" style="color:#a5b4fc">Automation</div>
+                    <h3>Documentation that publishes itself</h3>
+                    <div class="psr">
+                        <div><b>The problem</b><p>Documentation about data tables lived in scattered files and quickly went out of date, so people stopped trusting it.</p></div>
+                        <div><b>What I did</b><p>Treated docs like code: written in Markdown next to the data definitions, reviewed in pull requests, and published automatically to the company SharePoint after each merge.</p></div>
+                        <div><b>The result</b><p>One source of truth that updates itself. It is a proof of concept today, ready to roll out to more teams.</p></div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Docs-as-code</span><span class="tag">Azure Pipelines</span><span class="tag">Markdown</span><span class="tag">PowerShell</span>
+                    </div>
                 </div>
             </article>
         </div>
