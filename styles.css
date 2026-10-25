@@ -98,6 +98,18 @@ code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.9em; col
     display: none; background: none; border: 1px solid var(--border); color: var(--text);
     border-radius: 10px; width: 42px; height: 42px; font-size: 1.2rem; cursor: pointer;
 }
+.language-toggle {
+    padding: 8px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--cyan);
+    font: 600 0.78rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.language-toggle:hover { background: var(--surface-2); border-color: var(--cyan); transform: translateY(-2px); }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -280,6 +292,28 @@ code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.9em; col
 .bar-labels { display: flex; gap: 14px; padding: 8px 10px 0; }
 .bar-labels div { flex: 1; text-align: center; font-size: 0.72rem; color: var(--text-dim); }
 
+/* ---------- Capacity study diagram ---------- */
+.cost-saving {
+    padding: 5px 10px;
+    border: 1px solid rgba(52, 211, 153, .35);
+    border-radius: 999px;
+    color: var(--green);
+    font: 700 .72rem 'JetBrains Mono', monospace;
+}
+.capacity-flow { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0 22px; }
+.capacity-step { min-height: 142px; padding: 14px; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 14px; }
+.capacity-index { display: block; margin-bottom: 8px; color: var(--cyan); font: 600 .7rem 'JetBrains Mono', monospace; }
+.capacity-step strong { display: block; margin-bottom: 5px; font-size: .9rem; }
+.capacity-step p { color: var(--text-dim); font-size: .76rem; line-height: 1.55; }
+.cost-comparison { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--border); }
+.cost-bar-row { display: grid; grid-template-columns: 105px 1fr 42px; gap: 9px; align-items: center; color: var(--text-dim); font-size: .72rem; }
+.cost-bar-row b { color: var(--text); text-align: right; font: 700 .78rem 'JetBrains Mono', monospace; }
+.cost-track { height: 10px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.1); }
+.cost-fill { height: 100%; border-radius: inherit; }
+.cost-fill--before { width: 100%; background: #475569; }
+.cost-fill--after { width: 70%; background: linear-gradient(90deg, var(--green), var(--cyan)); }
+.cost-footnote { margin-top: 14px; color: var(--text-faint); font-size: .72rem; line-height: 1.5; }
+
 /* ---------- Other projects ---------- */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
 .project-card {
@@ -299,6 +333,18 @@ code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.9em; col
 .project-card h3 { font-size: 1.2rem; margin-bottom: 8px; letter-spacing: -0.01em; }
 .project-card p { color: var(--text-dim); font-size: 0.92rem; flex: 1; }
 .project-video { width: 100%; border-radius: 12px; margin-top: 14px; background: #000; border: 1px solid var(--border); }
+.dashboard-preview {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: top center;
+    margin: 8px 0 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    transition: transform 0.35s ease, border-color 0.35s ease;
+}
+.project-card:hover .dashboard-preview { transform: scale(1.02); border-color: var(--green); }
 .project-card .btn { margin-top: 18px; align-self: flex-start; }
 
 /* ---------- Timeline ---------- */
@@ -355,6 +401,9 @@ footer { padding: 36px 0; text-align: center; color: var(--text-faint); font-siz
     .story { padding: 22px; }
     .skills { grid-template-columns: 1fr; }
     .chip-float.b { left: 0; }
+    .capacity-flow { grid-template-columns: 1fr; }
+    .capacity-step { min-height: 0; }
+    .cost-bar-row { grid-template-columns: 92px 1fr 38px; }
 }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }

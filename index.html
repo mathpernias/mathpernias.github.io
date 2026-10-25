@@ -18,13 +18,14 @@
             <a href="#home" class="logo"><span class="logo-mark">MP</span> Mathis Pernias</a>
             <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#toolbox">Toolbox</a></li>
-                <li><a href="#stories">Featured Work</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" data-i18n="navHome">Home</a></li>
+                <li><a href="#about" data-i18n="navAbout">About</a></li>
+                <li><a href="#toolbox" data-i18n="navToolbox">Toolbox</a></li>
+                <li><a href="#stories" data-i18n="navStories">Featured Work</a></li>
+                <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+                <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
+                <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+                <li><button class="language-toggle" id="language-toggle" type="button" aria-label="Switch language">FR</button></li>
             </ul>
         </div>
     </nav>
@@ -34,31 +35,30 @@
         <canvas id="network"></canvas>
         <div class="container">
             <div>
-                <div class="eyebrow"><span class="pulse"></span> Data Analyst @ iA Groupe financier - Montr&eacute;al</div>
-                <h1 class="hero-title">Hi, I'm <span class="grad-text">Mathis Pernias</span></h1>
-                <p class="hero-subtitle">
-                    I turn raw data into <strong>trusted, secure and useful</strong> information that teams
-                    can act on. Right now I focus on <span class="typing" id="typed"></span><span class="caret"></span>
+                <div class="eyebrow"><span class="pulse"></span> <span data-i18n="heroEyebrow">Data Analyst @ iA Groupe financier - Montréal</span></div>
+                <h1 class="hero-title"><span data-i18n="heroGreeting">Hi, I'm</span> <span class="grad-text">Mathis Pernias</span></h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">
+                    I turn raw data into trusted, secure and useful information that teams can act on. Right now I focus on <span class="typing" id="typed"></span><span class="caret"></span>
                 </p>
                 <div class="hero-cta">
-                    <a href="#stories" class="btn btn-primary">See what I've built &rarr;</a>
-                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                    <a href="#stories" class="btn btn-primary" data-i18n="heroCta">See what I've built &rarr;</a>
+                    <a href="#contact" class="btn btn-secondary" data-i18n="contactCta">Get in touch</a>
                 </div>
             </div>
 
             <div class="hero-art">
-                <div class="chip-float a">Cloud</div>
-                <div class="chip-float b">Security</div>
-                <div class="chip-float c">AI</div>
+                <div class="chip-float a" data-i18n="chipCloud">Cloud</div>
+                <div class="chip-float b" data-i18n="chipSecurity">Security</div>
+                <div class="chip-float c" data-i18n="chipAi">AI</div>
                 <div class="glass-card">
-                    <div class="journey-title">The journey of a piece of data</div>
+                    <div class="journey-title" data-i18n="journeyTitle">The journey of a piece of data</div>
                     <div class="journey">
-                        <div class="j-step"><span class="j-ico">1</span><div><b>Collect</b><small>from apps, APIs and files</small><em>ETL / ELT &middot; ingestion</em></div></div>
-                        <div class="j-step"><span class="j-ico">2</span><div><b>Protect</b><small>secrets locked, personal data hidden</small><em>IAM &middot; data masking</em></div></div>
-                        <div class="j-step"><span class="j-ico">3</span><div><b>Verify</b><small>automated tests catch errors early</small><em>data quality &middot; CI/CD</em></div></div>
-                        <div class="j-step"><span class="j-ico">4</span><div><b>Deliver</b><small>dashboards, reports and ML models</small><em>Snowflake &middot; Power BI &middot; Databricks</em></div></div>
+                        <div class="j-step"><span class="j-ico">1</span><div><b data-i18n="journeyCollect">Collect</b><small data-i18n="journeyCollectText">from apps, APIs and files</small><em>ETL / ELT &middot; ingestion</em></div></div>
+                        <div class="j-step"><span class="j-ico">2</span><div><b data-i18n="journeyProtect">Protect</b><small data-i18n="journeyProtectText">secrets locked, personal data hidden</small><em>IAM &middot; data masking</em></div></div>
+                        <div class="j-step"><span class="j-ico">3</span><div><b data-i18n="journeyVerify">Verify</b><small data-i18n="journeyVerifyText">automated tests catch errors early</small><em>data quality &middot; CI/CD</em></div></div>
+                        <div class="j-step"><span class="j-ico">4</span><div><b data-i18n="journeyDeliver">Deliver</b><small data-i18n="journeyDeliverText">dashboards, reports and ML models</small><em>Snowflake &middot; Power BI &middot; Databricks</em></div></div>
                     </div>
-                    <div class="journey-foot">My job: make every step reliable.</div>
+                    <div class="journey-foot" data-i18n="journeyFoot">My job: make every step reliable.</div>
                 </div>
             </div>
         </div>
@@ -67,10 +67,10 @@
     <!-- ===================== STATS ===================== -->
     <div class="container">
         <div class="stats reveal">
-            <div class="stat"><div class="stat-num grad-text" data-count="30" data-suffix="%">0</div><div class="stat-label">infrastructure cost reduction</div></div>
-            <div class="stat"><div class="stat-num grad-text" data-count="5" data-suffix="">0</div><div class="stat-label">internships &amp; roles in data</div></div>
-            <div class="stat"><div class="stat-num grad-text" data-count="3" data-suffix="">0</div><div class="stat-label">countries: France, Denmark, Canada</div></div>
-            <div class="stat"><div class="stat-num grad-text" data-count="2" data-suffix="">0</div><div class="stat-label">engineering &amp; master's degrees</div></div>
+            <div class="stat"><div class="stat-num grad-text" data-count="30" data-suffix="%">0</div><div class="stat-label" data-i18n="statCost">infrastructure cost reduction</div></div>
+            <div class="stat"><div class="stat-num grad-text" data-count="5" data-suffix="">0</div><div class="stat-label" data-i18n="statRoles">internships &amp; roles in data</div></div>
+            <div class="stat"><div class="stat-num grad-text" data-count="3" data-suffix="">0</div><div class="stat-label" data-i18n="statCountries">countries: France, Denmark, Canada</div></div>
+            <div class="stat"><div class="stat-num grad-text" data-count="2" data-suffix="">0</div><div class="stat-label" data-i18n="statDegrees">engineering &amp; master's degrees</div></div>
         </div>
     </div>
 
@@ -78,27 +78,27 @@
     <section id="about" class="section">
         <div class="container">
             <div class="section-head reveal">
-                <div class="kicker">// about</div>
-                <h2 class="section-title">Building the <span class="grad-text">pipes</span> that make data useful</h2>
+                <div class="kicker">// <span data-i18n="aboutKicker">about</span></div>
+                <h2 class="section-title"><span data-i18n="aboutTitleBefore">Building the</span> <span class="grad-text" data-i18n="aboutTitleAccent">pipes</span> <span data-i18n="aboutTitleAfter">that make data useful</span></h2>
             </div>
             <div class="about-grid">
                 <div class="about-text reveal">
-                    <p>
+                    <p data-i18n="aboutTextOne">
                         Companies produce huge amounts of data, but it is only valuable if it is <strong>correct,
                         protected and easy to use</strong>. That is what I work on every day as a data analyst at
                         <strong>iA Groupe financier</strong>, one of Canada's major insurance and wealth management companies.
                     </p>
-                    <p>
+                    <p data-i18n="aboutTextTwo">
                         I graduated in August 2026 with a professional Master's in Computer Engineering from
                         <strong>Polytechnique Montr&eacute;al</strong> and an engineering degree in Data Science &amp; AI from
                         <strong>T&eacute;l&eacute;com Physique Strasbourg</strong>. I work comfortably in French and English.
                     </p>
                 </div>
                 <div class="skills reveal delay-1">
-                    <div class="skill-box"><h4>Build</h4><p>Automated data pipelines on Azure and Snowflake, written in SQL and Python</p></div>
-                    <div class="skill-box"><h4>Protect</h4><p>Secrets management, access control, anonymisation of personal data</p></div>
-                    <div class="skill-box"><h4>Verify</h4><p>Automated tests and CI so errors are found before users see them</p></div>
-                    <div class="skill-box"><h4>Understand</h4><p>Dashboards, analytics, and machine learning including RAG chatbots</p></div>
+                    <div class="skill-box"><h4 data-i18n="skillBuild">Build</h4><p data-i18n="skillBuildText">Automated data pipelines on Azure and Snowflake, written in SQL and Python</p></div>
+                    <div class="skill-box"><h4 data-i18n="skillProtect">Protect</h4><p data-i18n="skillProtectText">Secrets management, access control, anonymisation of personal data</p></div>
+                    <div class="skill-box"><h4 data-i18n="skillVerify">Verify</h4><p data-i18n="skillVerifyText">Automated tests and CI so errors are found before users see them</p></div>
+                    <div class="skill-box"><h4 data-i18n="skillUnderstand">Understand</h4><p data-i18n="skillUnderstandText">Dashboards, analytics, and machine learning including RAG chatbots</p></div>
                 </div>
             </div>
         </div>
@@ -108,45 +108,45 @@
     <section id="toolbox" class="section">
         <div class="container">
             <div class="section-head reveal">
-                <div class="kicker">// toolbox</div>
-                <h2 class="section-title">The tools I use <span class="grad-text">daily</span></h2>
-                <p class="section-lead">Each family in one sentence, so you know what it is for.</p>
+                <div class="kicker">// <span data-i18n="toolboxKicker">toolbox</span></div>
+                <h2 class="section-title"><span data-i18n="toolboxTitleBefore">The tools I use</span> <span class="grad-text" data-i18n="daily">daily</span></h2>
+                <p class="section-lead" data-i18n="toolboxLead">Each family in one sentence, so you know what it is for.</p>
             </div>
             <div class="stack-grid">
                 <div class="stack-card reveal">
                     <div class="stack-ico">&rarr;</div>
-                    <h3>Ingestion &amp; orchestration</h3>
-                    <p class="cap">Moving data from where it is created to where it is analysed, on a schedule.</p>
+                    <h3 data-i18n="toolIngestion">Ingestion &amp; orchestration</h3>
+                    <p class="cap" data-i18n="toolIngestionText">Moving data from where it is created to where it is analysed, on a schedule.</p>
                     <div class="project-tags"><span class="tag">Azure Data Factory</span><span class="tag">ETL / ELT</span><span class="tag">REST APIs</span><span class="tag">Batch &amp; incremental loads</span></div>
                 </div>
                 <div class="stack-card reveal delay-1">
                     <div class="stack-ico">DB</div>
-                    <h3>Warehouse &amp; modelling</h3>
-                    <p class="cap">Storing data in a clean, structured way so anyone can query it.</p>
+                    <h3 data-i18n="toolWarehouse">Warehouse &amp; modelling</h3>
+                    <p class="cap" data-i18n="toolWarehouseText">Storing data in a clean, structured way so anyone can query it.</p>
                     <div class="project-tags"><span class="tag cy">Snowflake</span><span class="tag cy">SQL</span><span class="tag cy">Data warehouse</span><span class="tag cy">Data Vault 2.0</span><span class="tag cy">Data marts</span></div>
                 </div>
                 <div class="stack-card reveal delay-2">
                     <div class="stack-ico">IaC</div>
-                    <h3>Infrastructure &amp; DevOps</h3>
-                    <p class="cap">Describing infrastructure as code and shipping changes safely and repeatably.</p>
+                    <h3 data-i18n="toolInfrastructure">Infrastructure &amp; DevOps</h3>
+                    <p class="cap" data-i18n="toolInfrastructureText">Describing infrastructure as code and shipping changes safely and repeatably.</p>
                     <div class="project-tags"><span class="tag pk">Terraform (IaC)</span><span class="tag pk">Azure DevOps</span><span class="tag pk">CI/CD</span><span class="tag pk">GitFlow</span><span class="tag pk">Docker</span></div>
                 </div>
                 <div class="stack-card reveal">
                     <div class="stack-ico">QA</div>
-                    <h3>Quality &amp; governance</h3>
-                    <p class="cap">Making sure data is correct, traceable and used under clear rules.</p>
+                    <h3 data-i18n="toolQuality">Quality &amp; governance</h3>
+                    <p class="cap" data-i18n="toolQualityText">Making sure data is correct, traceable and used under clear rules.</p>
                     <div class="project-tags"><span class="tag gr">pytest</span><span class="tag gr">Data quality tests</span><span class="tag gr">Data contracts</span><span class="tag gr">Data lineage</span><span class="tag gr">Data classification</span></div>
                 </div>
                 <div class="stack-card reveal delay-1">
                     <div class="stack-ico">&#128274;</div>
-                    <h3>Security &amp; privacy</h3>
-                    <p class="cap">Protecting credentials and personal information end to end.</p>
+                    <h3 data-i18n="toolSecurity">Security &amp; privacy</h3>
+                    <p class="cap" data-i18n="toolSecurityText">Protecting credentials and personal information end to end.</p>
                     <div class="project-tags"><span class="tag pk">Azure Key Vault</span><span class="tag pk">Managed identity</span><span class="tag pk">OAuth2</span><span class="tag pk">PII anonymisation</span><span class="tag pk">RBAC</span></div>
                 </div>
                 <div class="stack-card reveal delay-2">
                     <div class="stack-ico">{ }</div>
-                    <h3>Languages &amp; analytics</h3>
-                    <p class="cap">Scripting, analysis, dashboards and machine learning, served from Snowflake or Databricks.</p>
+                    <h3 data-i18n="toolAnalytics">Languages &amp; analytics</h3>
+                    <p class="cap" data-i18n="toolAnalyticsText">Scripting, analysis, dashboards and machine learning, served from Snowflake or Databricks.</p>
                     <div class="project-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PowerShell</span><span class="tag">Power BI</span><span class="tag">Databricks</span><span class="tag">ML models</span><span class="tag">Plotly / Dash</span><span class="tag">PyTorch</span></div>
                 </div>
             </div>
@@ -157,27 +157,27 @@
     <section id="stories" class="section">
         <div class="container">
             <div class="section-head reveal">
-                <div class="kicker">// featured work</div>
-                <h2 class="section-title">Four things I'm <span class="grad-text">proud of</span></h2>
-                <p class="section-lead">Real work done at iA: what the problem was, what I did, and what changed.</p>
+                <div class="kicker">// <span data-i18n="storiesKicker">featured work</span></div>
+                <h2 class="section-title"><span data-i18n="storiesTitleBefore">Four things I'm</span> <span class="grad-text" data-i18n="storiesTitleAccent">proud of</span></h2>
+                <p class="section-lead" data-i18n="storiesLead">Real work done at iA: what the problem was, what I did, and what changed.</p>
             </div>
 
             <!-- Story 1 : Security -->
             <article class="story reveal" style="--glow: rgba(244,63,94,0.2)">
                 <div class="story-info">
-                    <div class="story-badge" style="color:#f87171">Security</div>
-                    <h3>Locking passwords in a digital safe</h3>
+                    <div class="story-badge" style="color:#f87171" data-i18n="storySecurityBadge">Security</div>
+                    <h3 data-i18n="storySecurityTitle">Locking passwords in a digital safe</h3>
                     <div class="psr">
-                        <div><b>The problem</b><p>The login credentials our pipelines use to talk to the call-center platform were stored in plain sight in the tool's settings. Anyone with access could read them.</p></div>
-                        <div><b>What I did</b><p>Moved every credential into a secure vault. Pipelines now ask the vault for access only at the moment they need it, and nothing sensitive is left in the code.</p></div>
-                        <div><b>The result</b><p>No secret exposed anymore, no downtime, and a setup that meets the company's security standards.</p></div>
+                        <div><b data-i18n="problemLabel">The problem</b><p data-i18n="storySecurityProblem">The login credentials our pipelines use to talk to the call-center platform were stored in plain sight in the tool's settings. Anyone with access could read them.</p></div>
+                        <div><b data-i18n="actionLabel">What I did</b><p data-i18n="storySecurityAction">Moved every credential into a secure vault. Pipelines now ask the vault for access only at the moment they need it, and nothing sensitive is left in the code.</p></div>
+                        <div><b data-i18n="resultLabel">The result</b><p data-i18n="storySecurityResult">No secret exposed anymore, no downtime, and a setup that meets the company's security standards.</p></div>
                     </div>
                     <div class="project-tags">
                         <span class="tag pk">Azure Key Vault</span><span class="tag pk">OAuth2</span><span class="tag pk">Azure Data Factory</span>
                     </div>
                 </div>
                 <div class="diagram-card">
-                    <div class="dc-head"><span class="dc-title">before / after</span></div>
+                    <div class="dc-head"><span class="dc-title" data-i18n="diagramBeforeAfter">before / after</span></div>
 <pre class="mermaid">
 flowchart LR
   subgraph B["BEFORE"]
@@ -201,7 +201,7 @@ flowchart LR
             <!-- Story 2 : Privacy -->
             <article class="story flip reveal" style="--glow: rgba(244,114,182,0.2)">
                 <div class="diagram-card">
-                    <div class="dc-head"><span class="dc-title">how it works</span></div>
+                    <div class="dc-head"><span class="dc-title" data-i18n="diagramHowItWorks">how it works</span></div>
 <pre class="mermaid">
 flowchart LR
   SRC["Real customer conversations"] --> TOOL["Anonymisation tool"]:::hot
@@ -213,12 +213,12 @@ flowchart LR
 </pre>
                 </div>
                 <div class="story-info">
-                    <div class="story-badge" style="color:#f472b6">Privacy</div>
-                    <h3>Realistic test data, with no real people in it</h3>
+                    <div class="story-badge" style="color:#f472b6" data-i18n="storyPrivacyBadge">Privacy</div>
+                    <h3 data-i18n="storyPrivacyTitle">Realistic test data, with no real people in it</h3>
                     <div class="psr">
-                        <div><b>The problem</b><p>To test properly, developers need data that looks real. But copying real customer conversations into test environments puts personal information at risk.</p></div>
-                        <div><b>What I did</b><p>Built a configurable tool that automatically finds and replaces personal details in complex, nested data, driven by simple rules instead of custom code.</p></div>
-                        <div><b>The result</b><p>Teams test on realistic data while customer privacy stays protected.</p></div>
+                        <div><b data-i18n="problemLabel">The problem</b><p data-i18n="storyPrivacyProblem">To test properly, developers need data that looks real. But copying real customer conversations into test environments puts personal information at risk.</p></div>
+                        <div><b data-i18n="actionLabel">What I did</b><p data-i18n="storyPrivacyAction">Built a configurable tool that automatically finds and replaces personal details in complex, nested data, driven by simple rules instead of custom code.</p></div>
+                        <div><b data-i18n="resultLabel">The result</b><p data-i18n="storyPrivacyResult">Teams test on realistic data while customer privacy stays protected.</p></div>
                     </div>
                     <div class="project-tags">
                         <span class="tag pk">Snowflake</span><span class="tag pk">JSON</span><span class="tag pk">Privacy &amp; compliance</span>
@@ -229,31 +229,53 @@ flowchart LR
             <!-- Story 3 : Cost -->
             <article class="story reveal" style="--glow: rgba(52,211,153,0.2)">
                 <div class="story-info">
-                    <div class="story-badge" style="color:#34d399">Cost optimisation</div>
-                    <h3>Cutting infrastructure costs by 30%</h3>
+                    <div class="story-badge" style="color:#34d399" data-i18n="storyCostBadge">Cost optimisation</div>
+                    <h3 data-i18n="storyCostTitle">Cutting infrastructure costs by 30%</h3>
                     <div class="psr">
-                        <div><b>The problem</b><p>Servers that fetch data from external services were sized by guesswork, and nobody knew how much capacity was really needed.</p></div>
-                        <div><b>What I did</b><p>Measured how many requests each service really handles and how many it allows, then built a data-backed sizing recommendation.</p></div>
-                        <div><b>The result</b><p>About 30% lower infrastructure cost, with the same performance.</p></div>
+                        <div><b data-i18n="problemLabel">The problem</b><p data-i18n="storyCostProblem">Servers that fetch data from external services were sized by guesswork, and nobody knew how much capacity was really needed.</p></div>
+                        <div><b data-i18n="actionLabel">What I did</b><p data-i18n="storyCostAction">Measured how many requests each service really handles and how many it allows, then built a data-backed sizing recommendation.</p></div>
+                        <div><b data-i18n="resultLabel">The result</b><p data-i18n="storyCostResult">About 30% lower infrastructure cost, with the same performance.</p></div>
                     </div>
                     <div class="project-tags">
                         <span class="tag gr">Capacity analysis</span><span class="tag gr">Python</span><span class="tag gr">Azure</span>
                     </div>
                 </div>
                 <div class="diagram-card">
-                    <div class="dc-head"><span class="dc-title">infrastructure cost</span></div>
-                    <div class="bars">
-                        <div class="bar dim" data-h="80%"><span>100%</span></div>
-                        <div class="bar" data-h="56%"><span>70%</span></div>
+                    <div class="dc-head"><span class="dc-title" data-i18n="diagramInfrastructure">infrastructure cost</span><span class="cost-saving" data-i18n="costSavingBadge">-30%</span></div>
+                    <div class="capacity-flow">
+                        <div class="capacity-step">
+                            <span class="capacity-index">01</span>
+                            <strong data-i18n="capacityMeasureTitle">Measure</strong>
+                            <p data-i18n="capacityMeasureText">SHIR memory stayed at 5–6.5 GiB; CPU was usually 0–20%, with peaks near 74%.</p>
+                        </div>
+                        <div class="capacity-step">
+                            <span class="capacity-index">02</span>
+                            <strong data-i18n="capacityDiagnoseTitle">Diagnose</strong>
+                            <p data-i18n="capacityDiagnoseText">Queues and HTTP 429 errors came from request concurrency, not constant VM saturation.</p>
+                        </div>
+                        <div class="capacity-step">
+                            <span class="capacity-index">03</span>
+                            <strong data-i18n="capacityChooseTitle">Right-size</strong>
+                            <p data-i18n="capacityChooseText">Target: D2ads_v5, 2 vCPU and 8 GiB, with D4ads_v5 as the conservative option.</p>
+                        </div>
+                        <div class="capacity-step">
+                            <span class="capacity-index">04</span>
+                            <strong data-i18n="capacityValidateTitle">Validate</strong>
+                            <p data-i18n="capacityValidateText">Tune ADF concurrency, then validate progressively in DEV, ACCP and PROD.</p>
+                        </div>
                     </div>
-                    <div class="bar-labels"><div>Before analysis</div><div>After right-sizing</div></div>
+                    <div class="cost-comparison">
+                        <div class="cost-bar-row"><span data-i18n="costBeforeLabel">Before analysis</span><div class="cost-track"><div class="cost-fill cost-fill--before"></div></div><b>100%</b></div>
+                        <div class="cost-bar-row"><span data-i18n="costAfterLabel">After right-sizing</span><div class="cost-track"><div class="cost-fill cost-fill--after"></div></div><b>70%</b></div>
+                    </div>
+                    <div class="cost-footnote" data-i18n="costFootnote">Same expected service, 30% lower VM/SHIR cost on the studied scope.</div>
                 </div>
             </article>
 
             <!-- Story 4 : Docs as code -->
             <article class="story flip reveal" style="--glow: rgba(99,102,241,0.22)">
                 <div class="diagram-card">
-                    <div class="dc-head"><span class="dc-title">documentation pipeline</span></div>
+                    <div class="dc-head"><span class="dc-title" data-i18n="diagramDocs">documentation pipeline</span></div>
 <pre class="mermaid">
 flowchart LR
   W["Write the doc next to the code"] --> PR["Pull request and review"]
@@ -265,12 +287,12 @@ flowchart LR
 </pre>
                 </div>
                 <div class="story-info">
-                    <div class="story-badge" style="color:#a5b4fc">Automation</div>
-                    <h3>Documentation that publishes itself</h3>
+                    <div class="story-badge" style="color:#a5b4fc" data-i18n="storyDocsBadge">Automation</div>
+                    <h3 data-i18n="storyDocsTitle">Documentation that publishes itself</h3>
                     <div class="psr">
-                        <div><b>The problem</b><p>Documentation about data tables lived in scattered files and quickly went out of date, so people stopped trusting it.</p></div>
-                        <div><b>What I did</b><p>Treated docs like code: written in Markdown next to the data definitions, reviewed in pull requests, and published automatically to the company SharePoint after each merge.</p></div>
-                        <div><b>The result</b><p>One source of truth that updates itself. It is a proof of concept today, ready to roll out to more teams.</p></div>
+                        <div><b data-i18n="problemLabel">The problem</b><p data-i18n="storyDocsProblem">Documentation about data tables lived in scattered files and quickly went out of date, so people stopped trusting it.</p></div>
+                        <div><b data-i18n="actionLabel">What I did</b><p data-i18n="storyDocsAction">Treated docs like code: written in Markdown next to the data definitions, reviewed in pull requests, and published automatically to the company SharePoint after each merge.</p></div>
+                        <div><b data-i18n="resultLabel">The result</b><p data-i18n="storyDocsResult">One source of truth that updates itself. It is a proof of concept today, ready to roll out to more teams.</p></div>
                     </div>
                     <div class="project-tags">
                         <span class="tag">Docs-as-code</span><span class="tag">Azure Pipelines</span><span class="tag">Markdown</span><span class="tag">PowerShell</span>
@@ -284,8 +306,8 @@ flowchart LR
     <section id="projects" class="section">
         <div class="container">
             <div class="section-head reveal">
-                <div class="kicker">// more projects</div>
-                <h2 class="section-title">Side quests &amp; <span class="grad-text">research</span></h2>
+                <div class="kicker">// <span data-i18n="projectsKicker">more projects</span></div>
+                <h2 class="section-title"><span data-i18n="projectsTitleBefore">Side quests &amp;</span> <span class="grad-text" data-i18n="projectsTitleAccent">research</span></h2>
             </div>
             <div class="projects-grid">
                 <div class="project-card reveal">
@@ -293,8 +315,8 @@ flowchart LR
                         <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="14" width="36" height="26" rx="6"/><path d="M18 40v8l10-8"/><circle cx="20" cy="27" r="2" fill="#fff"/><circle cx="26" cy="27" r="2" fill="#fff"/><circle cx="32" cy="27" r="2" fill="#fff"/><path d="M50 22c4 2 6 6 6 10s-2 8-6 10"/></svg>
                     </div>
                     <div class="project-body">
-                        <h3>AI chatbot for drug data</h3>
-                        <p>At McKesson, I built an internal chatbot that answers questions about public drug-coverage data, so teams get answers in seconds instead of digging through tables.</p>
+                        <h3 data-i18n="projectChatbotTitle">AI chatbot for drug data</h3>
+                        <p data-i18n="projectChatbotText">At McKesson, I built an internal chatbot that answers questions about public drug-coverage data, so teams get answers in seconds instead of digging through tables.</p>
                         <div class="project-tags"><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Snowflake AI</span></div>
                     </div>
                 </div>
@@ -304,8 +326,8 @@ flowchart LR
                         <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="16" r="6"/><circle cx="18" cy="48" r="6"/><circle cx="46" cy="32" r="6"/><path d="M18 22v20M24 16c14 0 22 6 22 10M24 48c14 0 22-6 22-10"/></svg>
                     </div>
                     <div class="project-body">
-                        <h3>Open source contribution</h3>
-                        <p>Contributed to <code>datacontract-cli</code>, a public tool that helps teams agree on and check the quality of the data they share.</p>
+                        <h3 data-i18n="projectOpenSourceTitle">Open source contribution</h3>
+                        <p data-i18n="projectOpenSourceText">Contributed to <code>datacontract-cli</code>, a public tool that helps teams agree on and check the quality of the data they share.</p>
                         <video class="project-video" autoplay muted loop playsinline>
                             <source src="mermaid_demo.mp4" type="video/mp4">
                         </video>
@@ -319,8 +341,8 @@ flowchart LR
                         <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34c6 0 6-18 12-18s6 28 12 28 6-22 12-22 6 12 16 12"/><path d="M6 54h52"/></svg>
                     </div>
                     <div class="project-body">
-                        <h3>AI that invents realistic data</h3>
-                        <p>Trained a neural network (a GAN) to generate artificial time series that look real, and studied how good and how stable the results are.</p>
+                        <h3 data-i18n="projectGanTitle">AI that invents realistic data</h3>
+                        <p data-i18n="projectGanText">Trained a neural network (a GAN) to generate artificial time series that look real, and studied how good and how stable the results are.</p>
                         <div class="project-tags"><span class="tag pk">PyTorch</span><span class="tag pk">Deep learning</span></div>
                     </div>
                 </div>
@@ -330,10 +352,11 @@ flowchart LR
                         <svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 54V30M24 54V16M38 54V36M52 54V22"/><path d="M6 54h52"/></svg>
                     </div>
                     <div class="project-body">
-                        <h3>Berlin Marathon dashboard</h3>
-                        <p>An interactive web app to explore how weather, age and nationality affect marathon results across the years.</p>
+                        <h3 data-i18n="marathonTitle">Berlin Marathon dashboard</h3>
+                        <img class="dashboard-preview" src="imagedashboard.png" alt="Berlin Marathon Dashboard preview" data-i18n-alt="marathonImageAlt">
+                        <p data-i18n="marathonText">An interactive web app to explore how weather, age and nationality affect marathon results across the years.</p>
                         <div class="project-tags"><span class="tag gr">Dash</span><span class="tag gr">Plotly</span><span class="tag gr">Data viz</span></div>
-                        <a href="https://github.com/mathpernias/BerlinMarathonDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">View on GitHub</a>
+                        <a href="https://github.com/mathpernias/BerlinMarathonDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" data-i18n="githubButton">View on GitHub</a>
                     </div>
                 </div>
             </div>
@@ -344,8 +367,8 @@ flowchart LR
     <section id="experience" class="section">
         <div class="container">
             <div class="section-head reveal">
-                <div class="kicker">// journey</div>
-                <h2 class="section-title">Experience &amp; <span class="grad-text">education</span></h2>
+                <div class="kicker">// <span data-i18n="experienceKicker">journey</span></div>
+                <h2 class="section-title"><span data-i18n="experienceTitleBefore">Experience &amp;</span> <span class="grad-text" data-i18n="experienceTitleAccent">education</span></h2>
             </div>
             <div class="timeline">
 
@@ -353,14 +376,14 @@ flowchart LR
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">AUG 2026 - PRESENT</span>
-                        <h3 class="timeline-title">Data Analyst</h3>
+                        <h3 class="timeline-title" data-i18n="timelineCurrentTitle">Data Analyst</h3>
                         <p class="timeline-company">iA Groupe financier - Montr&eacute;al</p>
-                        <p class="timeline-description">Full time on the customer data and contact-center platforms, focusing on secure, reliable pipelines and data quality.</p>
+                        <p class="timeline-description" data-i18n="timelineCurrentText">Full time on the customer data and contact-center platforms, focusing on secure, reliable pipelines and data quality.</p>
                         <ul class="timeline-achievements">
-                            <li>Moved API credentials into Azure Key Vault.</li>
-                            <li>Built configurable anonymisation of sensitive data for test environments.</li>
-                            <li>Improved pipeline reliability, marketing campaign mappings and duplicate handling.</li>
-                            <li>Analysed server and API capacity, contributing to a 30% infrastructure cost reduction.</li>
+                            <li data-i18n="timelineCurrentOne">Moved API credentials into Azure Key Vault.</li>
+                            <li data-i18n="timelineCurrentTwo">Built configurable anonymisation of sensitive data for test environments.</li>
+                            <li data-i18n="timelineCurrentThree">Improved pipeline reliability, marketing campaign mappings and duplicate handling.</li>
+                            <li data-i18n="timelineCurrentFour">Analysed server and API capacity, contributing to a 30% infrastructure cost reduction.</li>
                         </ul>
                     </div>
                 </div>
@@ -369,12 +392,12 @@ flowchart LR
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">JAN 2026 - AUG 2026</span>
-                        <h3 class="timeline-title">Final-Year Data Analyst Intern</h3>
+                        <h3 class="timeline-title" data-i18n="timelineInternTitle">Final-Year Data Analyst Intern</h3>
                         <p class="timeline-company">iA Groupe financier - Montr&eacute;al</p>
-                        <p class="timeline-description">Final-year internship with the data team.</p>
+                        <p class="timeline-description" data-i18n="timelineInternText">Final-year internship with the data team.</p>
                         <ul class="timeline-achievements">
-                            <li>Worked with Azure Data Factory, Snowflake and Azure Key Vault.</li>
-                            <li>Delivered improvements to security, test-data compliance and data quality.</li>
+                            <li data-i18n="timelineInternOne">Worked with Azure Data Factory, Snowflake and Azure Key Vault.</li>
+                            <li data-i18n="timelineInternTwo">Delivered improvements to security, test-data compliance and data quality.</li>
                         </ul>
                     </div>
                 </div>
@@ -383,13 +406,13 @@ flowchart LR
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">MAY 2025 - AUG 2025</span>
-                        <h3 class="timeline-title">Data Engineering &amp; AI Intern</h3>
+                        <h3 class="timeline-title" data-i18n="timelineMckessonTitle">Data Engineering &amp; AI Intern</h3>
                         <p class="timeline-company">McKesson (DataHub Team) - Montr&eacute;al</p>
-                        <p class="timeline-description">Built and validated data pipelines supporting analytics and AI use cases.</p>
+                        <p class="timeline-description" data-i18n="timelineMckessonText">Built and validated data pipelines supporting analytics and AI use cases.</p>
                         <ul class="timeline-achievements">
-                            <li>Developed a RAG-based chatbot using drug data.</li>
-                            <li>Automated tests and integrated them into Git/CI workflows.</li>
-                            <li>Built Power BI dashboards for KPI tracking and monitored error rates.</li>
+                            <li data-i18n="timelineMckessonOne">Developed a RAG-based chatbot using drug data.</li>
+                            <li data-i18n="timelineMckessonTwo">Automated tests and integrated them into Git/CI workflows.</li>
+                            <li data-i18n="timelineMckessonThree">Built Power BI dashboards for KPI tracking and monitored error rates.</li>
                         </ul>
                     </div>
                 </div>
@@ -398,12 +421,12 @@ flowchart LR
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">MAY 2024 - AUG 2024</span>
-                        <h3 class="timeline-title">Research Intern (Data Science)</h3>
+                        <h3 class="timeline-title" data-i18n="timelineMaerskTitle">Research Intern (Data Science)</h3>
                         <p class="timeline-company">Maersk Mc-Kinney Moller Institute - Denmark</p>
-                        <p class="timeline-description">Analytical studies and predictive models on simulated epidemic data.</p>
+                        <p class="timeline-description" data-i18n="timelineMaerskText">Analytical studies and predictive models on simulated epidemic data.</p>
                         <ul class="timeline-achievements">
-                            <li>Developed supervised models using Decision Trees (Python, Julia).</li>
-                            <li>Communicated findings through structured summaries and project reviews.</li>
+                            <li data-i18n="timelineMaerskOne">Developed supervised models using Decision Trees (Python, Julia).</li>
+                            <li data-i18n="timelineMaerskTwo">Communicated findings through structured summaries and project reviews.</li>
                         </ul>
                     </div>
                 </div>
@@ -412,12 +435,12 @@ flowchart LR
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">JUNE 2023</span>
-                        <h3 class="timeline-title">Systems Engineering Intern</h3>
+                        <h3 class="timeline-title" data-i18n="timelineInriaTitle">Systems Engineering Intern</h3>
                         <p class="timeline-company">INRIA (CAMUS Team) - Strasbourg</p>
-                        <p class="timeline-description">Automated load-balancing computation for multi-threaded workloads.</p>
+                        <p class="timeline-description" data-i18n="timelineInriaText">Automated load-balancing computation for multi-threaded workloads.</p>
                         <ul class="timeline-achievements">
-                            <li>Performance diagnostics on multi-core architectures.</li>
-                            <li>Technologies: C, Bash, Python.</li>
+                            <li data-i18n="timelineInriaOne">Performance diagnostics on multi-core architectures.</li>
+                            <li data-i18n="timelineInriaTwo">Technologies: C, Bash, Python.</li>
                         </ul>
                     </div>
                 </div>
@@ -426,9 +449,9 @@ flowchart LR
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2024 - AUG 2026</span>
-                        <h3 class="timeline-title">Master's in Computer Engineering</h3>
+                        <h3 class="timeline-title" data-i18n="timelineMasterTitle">Master's in Computer Engineering</h3>
                         <p class="timeline-company">Polytechnique Montr&eacute;al</p>
-                        <p class="timeline-description">Professional Master's degree specialising in Data Engineering and Analytics. Graduated.</p>
+                        <p class="timeline-description" data-i18n="timelineMasterText">Professional Master's degree specialising in Data Engineering and Analytics. Graduated.</p>
                     </div>
                 </div>
 
@@ -436,9 +459,9 @@ flowchart LR
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2022 - AUG 2026</span>
-                        <h3 class="timeline-title">Engineering Degree in Data Science &amp; AI</h3>
+                        <h3 class="timeline-title" data-i18n="timelineTelecomTitle">Engineering Degree in Data Science &amp; AI</h3>
                         <p class="timeline-company">T&eacute;l&eacute;com Physique Strasbourg</p>
-                        <p class="timeline-description">Engineering degree specialising in Data Science and Artificial Intelligence. Graduated.</p>
+                        <p class="timeline-description" data-i18n="timelineTelecomText">Engineering degree specialising in Data Science and Artificial Intelligence. Graduated.</p>
                     </div>
                 </div>
 
@@ -450,11 +473,11 @@ flowchart LR
     <section id="contact" class="section">
         <div class="container">
             <div class="contact-box reveal">
-                <div class="kicker">// contact</div>
-                <h2>Let's build something <span class="grad-text">great</span></h2>
-                <p>I'm always interested in new projects and opportunities in Data Engineering and AI.</p>
+                <div class="kicker">// <span data-i18n="contactKicker">contact</span></div>
+                <h2><span data-i18n="contactTitleBefore">Let's build something</span> <span class="grad-text" data-i18n="contactTitleAccent">great</span></h2>
+                <p data-i18n="contactText">I'm always interested in new projects and opportunities in Data Engineering and AI.</p>
                 <div class="contact-links">
-                    <a href="mailto:mathis.pernias@gmail.com" class="btn btn-primary">Email me</a>
+                    <a href="mailto:mathis.pernias@gmail.com" class="btn btn-primary" data-i18n="emailButton">Email me</a>
                     <a href="https://github.com/mathpernias" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
                     <a href="https://www.linkedin.com/in/mathis-pernias-74a640199/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
                 </div>
@@ -463,7 +486,7 @@ flowchart LR
     </section>
 
     <footer>
-        <div class="container"><p>&copy; 2026 Mathis Pernias. Built with care in Montr&eacute;al.</p></div>
+        <div class="container"><p data-i18n="footerText">&copy; 2026 Mathis Pernias. Built with care in Montr&eacute;al.</p></div>
     </footer>
 
     <script src="script.js"></script>
