@@ -76,16 +76,59 @@ mathis-pernias
             </dl>
         </section>
 
+        <!-- ============ DATA JOURNEY ============ -->
+        <section id="journey" class="section wrap">
+            <header class="section-head">
+                <span class="section-num">01</span>
+                <h2 data-i18n="jTitle">The journey of a piece of data</h2>
+                <p data-i18n="jLead">Four stages between a source system and a decision. My job is to make each one reliable. Every stage links to real work below.</p>
+            </header>
+            <ol class="journey reveal">
+                <li class="stage">
+                    <span class="stage-dot" aria-hidden="true"></span>
+                    <span class="stage-num">01</span>
+                    <h3 data-i18n="jCollect">Collect</h3>
+                    <p data-i18n="jCollectText">Pull data from apps, APIs and files, on a schedule, without overloading anyone.</p>
+                    <p class="stage-tech">ADF · REST APIs · SHIR · ETL/ELT</p>
+                    <a class="stage-link" href="#case-c" data-i18n="jCollectLink">case C: ingestion sizing →</a>
+                </li>
+                <li class="stage">
+                    <span class="stage-dot" aria-hidden="true"></span>
+                    <span class="stage-num">02</span>
+                    <h3 data-i18n="jProtect">Protect</h3>
+                    <p data-i18n="jProtectText">Secrets stay in a vault; personal data is masked before it leaves production.</p>
+                    <p class="stage-tech">Key Vault · managed identity · RBAC · PII masking</p>
+                    <a class="stage-link" href="#case-a" data-i18n="jProtectLink">cases A &amp; B: secrets, PII →</a>
+                </li>
+                <li class="stage">
+                    <span class="stage-dot" aria-hidden="true"></span>
+                    <span class="stage-num">03</span>
+                    <h3 data-i18n="jVerify">Verify</h3>
+                    <p data-i18n="jVerifyText">Automated tests and contracts catch bad data before users ever see it.</p>
+                    <p class="stage-tech">pytest · data contracts · CI/CD</p>
+                    <a class="stage-link" href="#projects" data-i18n="jVerifyLink">datacontract-cli →</a>
+                </li>
+                <li class="stage">
+                    <span class="stage-dot" aria-hidden="true"></span>
+                    <span class="stage-num">04</span>
+                    <h3 data-i18n="jDeliver">Deliver</h3>
+                    <p data-i18n="jDeliverText">Clean, documented models that feed dashboards, reports and ML.</p>
+                    <p class="stage-tech">Snowflake · Power BI · Databricks</p>
+                    <a class="stage-link" href="#case-d" data-i18n="jDeliverLink">case D: docs-as-code →</a>
+                </li>
+            </ol>
+        </section>
+
         <!-- ============ WORK ============ -->
         <section id="work" class="section wrap">
             <header class="section-head">
-                <span class="section-num">01</span>
+                <span class="section-num">02</span>
                 <h2 data-i18n="workTitle">Selected work</h2>
                 <p data-i18n="workLead">Four projects from my work at iA Financial Group: context, approach, outcome.</p>
             </header>
 
             <!-- Case: secrets -->
-            <article class="case reveal">
+            <article class="case reveal" id="case-a">
                 <div class="case-meta">
                     <span class="case-idx">A</span>
                     <p class="case-tag" data-i18n="c1Tag">Security · Azure Data Factory</p>
@@ -122,7 +165,7 @@ mathis-pernias
             </article>
 
             <!-- Case: PII -->
-            <article class="case reveal">
+            <article class="case reveal" id="case-b">
                 <div class="case-meta">
                     <span class="case-idx">B</span>
                     <p class="case-tag" data-i18n="c2Tag">Privacy · Snowflake</p>
@@ -163,7 +206,7 @@ mathis-pernias
             </article>
 
             <!-- Case: cost -->
-            <article class="case reveal">
+            <article class="case reveal" id="case-c">
                 <div class="case-meta">
                     <span class="case-idx">C</span>
                     <p class="case-tag" data-i18n="c3Tag">FinOps · Azure</p>
@@ -202,7 +245,7 @@ mathis-pernias
             </article>
 
             <!-- Case: docs as code -->
-            <article class="case reveal">
+            <article class="case reveal" id="case-d">
                 <div class="case-meta">
                     <span class="case-idx">D</span>
                     <p class="case-tag" data-i18n="c4Tag">DevOps · Docs-as-code</p>
@@ -233,7 +276,7 @@ mathis-pernias
         <!-- ============ PROJECTS ============ -->
         <section id="projects" class="section wrap">
             <header class="section-head">
-                <span class="section-num">02</span>
+                <span class="section-num">03</span>
                 <h2 data-i18n="projTitle">Other projects</h2>
                 <p data-i18n="projLead">Internships, open source and research.</p>
             </header>
@@ -277,7 +320,7 @@ mathis-pernias
         <!-- ============ STACK ============ -->
         <section id="stack" class="section wrap">
             <header class="section-head">
-                <span class="section-num">03</span>
+                <span class="section-num">04</span>
                 <h2 data-i18n="stackTitle">Stack</h2>
                 <p data-i18n="stackLead">What I use day to day, grouped by job.</p>
             </header>
@@ -294,7 +337,7 @@ mathis-pernias
         <!-- ============ EXPERIENCE ============ -->
         <section id="experience" class="section wrap">
             <header class="section-head">
-                <span class="section-num">04</span>
+                <span class="section-num">05</span>
                 <h2 data-i18n="expTitle">Experience</h2>
             </header>
             <ol class="roles">
@@ -368,7 +411,7 @@ mathis-pernias
 
         <!-- ============ CONTACT ============ -->
         <section id="contact" class="section wrap contact">
-            <span class="section-num">05</span>
+            <span class="section-num">06</span>
             <h2 data-i18n="contactTitle">Let's talk data.</h2>
             <p data-i18n="contactText">Happy to chat about data engineering, data platforms or applied AI. Email is the fastest way to reach me.</p>
             <a class="contact-mail" href="mailto:mathis.pernias@gmail.com">mathis.pernias@gmail.com <span aria-hidden="true">→</span></a>

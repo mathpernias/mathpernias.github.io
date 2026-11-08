@@ -52,6 +52,13 @@
         m3: 'expériences en données entre la France, le Danemark et le Canada',
         m4: 'diplômes : maîtrise Polytechnique Montréal, ingénieur Télécom Physique Strasbourg',
 
+        jTitle: 'Le parcours d’une donnée',
+        jLead: 'Quatre étapes entre un système source et une décision. Mon rôle : rendre chacune fiable. Chaque étape renvoie à un projet concret plus bas.',
+        jCollect: 'Collecter', jCollectText: 'Extraire les données des applications, API et fichiers, selon un calendrier, sans surcharger personne.', jCollectLink: 'cas C : dimensionner l’ingestion →',
+        jProtect: 'Protéger', jProtectText: 'Les secrets restent dans un coffre ; les données personnelles sont masquées avant de quitter la production.', jProtectLink: 'cas A et B : secrets, données personnelles →',
+        jVerify: 'Vérifier', jVerifyText: 'Tests automatisés et contrats de données détectent les erreurs avant les utilisateurs.', jVerifyLink: 'datacontract-cli →',
+        jDeliver: 'Valoriser', jDeliverText: 'Des modèles propres et documentés qui alimentent tableaux de bord, rapports et ML.', jDeliverLink: 'cas D : docs-as-code →',
+
         workTitle: 'Réalisations',
         workLead: 'Quatre projets issus de mon travail chez iA Groupe financier : contexte, approche, résultat.',
         lblProblem: 'Problème', lblApproach: 'Approche', lblOutcome: 'Résultat',
