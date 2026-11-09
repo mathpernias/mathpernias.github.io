@@ -384,6 +384,12 @@ code { font-family: var(--mono); font-size: 0.88em; color: var(--text); backgrou
 .media { width: 100%; border: 1px solid var(--line); border-radius: 6px; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; background: var(--bg-3); }
 .link { font: 0.76rem var(--mono); color: var(--text-2); overflow-wrap: anywhere; }
 .link:hover { color: var(--accent); }
+.media-link { display: block; border-radius: 6px; }
+.media-link .media { transition: border-color .2s ease; }
+.media-link:hover .media { border-color: var(--accent); }
+.link-live { color: var(--accent); font-weight: 600; }
+.link-live:hover { text-decoration: underline; }
+.link-note { font-size: 0.78rem; color: var(--text-3); margin-top: -8px; }
 @media (max-width: 760px) {
     .projects { grid-template-columns: 1fr; }
     .project { padding: 22px 18px; }

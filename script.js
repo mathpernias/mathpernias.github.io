@@ -102,8 +102,9 @@
         p3Title: 'Séries temporelles synthétiques avec des GAN',
         p3Text: 'Entraînement d’un réseau antagoniste génératif pour produire des séries temporelles synthétiques réalistes, puis évaluation de la qualité des échantillons et de la stabilité de l’entraînement.',
         p4Title: 'Dashboard du Marathon de Berlin',
-        p4Text: 'Application web interactive pour explorer l’influence de la météo, de l’âge et de la nationalité sur les résultats du Marathon de Berlin au fil des années.',
-        p4Alt: 'Capture du dashboard du Marathon de Berlin',
+        p4Text: 'Application web interactive sur 780 000 arrivées du Marathon de Berlin (1999–2023) : records du monde, simulateur qui classe votre propre temps, zoom sur chaque édition, météo et nationalités.',
+        p4Live: 'Démo en ligne',
+        p4Note: 'Hébergement gratuit : la première visite peut prendre environ une minute, le temps de réveiller le serveur.',
 
         stackTitle: 'Stack',
         stackLead: 'Ce que j’utilise au quotidien, regroupé par usage.',
@@ -111,7 +112,7 @@
         s4: 'Qualité et gouvernance', s5: 'Sécurité et confidentialité', s6: 'Langages et analytique',
 
         expTitle: 'Parcours',
-        d1: 'Août 2026 — auj.', d2: 'Janv. — août 2026', d3: 'Mai — août 2025', d4: 'Mai — août 2024', d5: 'Juin 2023',
+        d1: 'Août 2026 — auj.', d2: 'Mai — août 2026', d3: 'Mai — août 2025', d4: 'Mai — août 2024', d5: 'Juin 2023',
         r1: 'Analyste de données',
         r1Text: 'Plateformes de données clients et de centre de contact. Pipelines sécurisés et fiables, qualité des données.',
         r1a: 'Migration des identifiants API vers Azure Key Vault.',
