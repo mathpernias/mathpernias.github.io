@@ -45,6 +45,7 @@
         heroStatus: 'Analyste de données chez iA Groupe financier · Montréal, QC',
         heroTitle: 'Des données fiables, pour décider en&nbsp;confiance.',
         heroLead: 'Je suis Mathis, analyste de données chez iA Groupe financier. Derrière chaque tableau de bord et chaque modèle, il y a un flux de données : je construis ces flux, je protège les informations personnelles qu’ils contiennent et je les teste pour que les chiffres sur lesquels on s’appuie soient justes.',
+        termStatus: 'disponible', cmdProjects: 'projets', termInputLabel: 'Tape une commande, par exemple help',
         heroCta: 'Voir les réalisations',
 
         m1: 'de coût VM sur notre runtime d’intégration auto-hébergé, après une étude de capacité',
@@ -185,6 +186,8 @@
 
     const textNodes = [...document.querySelectorAll('[data-i18n]')];
     const altNodes = [...document.querySelectorAll('[data-i18n-alt]')];
+    const ariaNodes = [...document.querySelectorAll('[data-i18n-aria]')];
+    const enAria = new Map(ariaNodes.map(el => [el, el.getAttribute('aria-label')]));
     const enText = new Map(textNodes.map(el => [el, el.innerHTML]));
     const enAlt = new Map(altNodes.map(el => [el, el.alt]));
     const langButtons = [...document.querySelectorAll('.lang button')];
@@ -200,6 +203,10 @@
         altNodes.forEach(el => {
             const key = el.dataset.i18nAlt;
             el.alt = lang === 'fr' && fr[key] !== undefined ? fr[key] : enAlt.get(el);
+        });
+        ariaNodes.forEach(el => {
+            const key = el.dataset.i18nAria;
+            el.setAttribute('aria-label', lang === 'fr' && fr[key] !== undefined ? fr[key] : enAria.get(el));
         });
         langButtons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
         try { localStorage.setItem('portfolio-language', lang); } catch (e) { /* storage unavailable */ }

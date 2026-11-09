@@ -51,19 +51,34 @@
                 </div>
             </div>
 
-            <aside class="term" aria-label="Profile summary">
-                <div class="term-bar"><span>~/profile</span><span>zsh</span></div>
-<pre class="term-body"><span class="t-prompt">$</span> whoami
+            <aside class="term" aria-label="Interactive terminal">
+                <div class="term-bar"><span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="term-title">~/profile</span><span>zsh</span></div>
+<div class="term-out" role="log"><span class="t-prompt">$</span> whoami
 mathis-pernias
 
 <span class="t-prompt">$</span> cat profile.yml
-<span class="t-key">role:</span>     data analyst / data engineer
-<span class="t-key">company:</span>  iA Financial Group
-<span class="t-key">based:</span>    Montréal, QC
-<span class="t-key">cloud:</span>    [azure, snowflake, databricks]
-<span class="t-key">code:</span>     [sql, python, powershell, terraform]
-<span class="t-key">focus:</span>    [security, data quality, ci/cd]
-<span class="t-key">speaks:</span>   [fr, en]</pre>
+<span class="t-key">role:</span>     <span class="t-str">data analyst / data engineer</span>
+<span class="t-key">company:</span>  <span class="t-str">iA Financial Group</span>
+<span class="t-key">based:</span>    <span class="t-str">Montréal, QC</span>
+<span class="t-key">cloud:</span>    <span class="t-punc">[</span><span class="t-list">azure</span><span class="t-punc">, </span><span class="t-list">snowflake</span><span class="t-punc">, </span><span class="t-list">databricks</span><span class="t-punc">]</span>
+<span class="t-key">code:</span>     <span class="t-punc">[</span><span class="t-list">sql</span><span class="t-punc">, </span><span class="t-list">python</span><span class="t-punc">, </span><span class="t-list">powershell</span><span class="t-punc">, </span><span class="t-list">terraform</span><span class="t-punc">]</span>
+<span class="t-key">focus:</span>    <span class="t-punc">[</span><span class="t-list">security</span><span class="t-punc">, </span><span class="t-list">data quality</span><span class="t-punc">, </span><span class="t-list">ci/cd</span><span class="t-punc">]</span>
+<span class="t-key">speaks:</span>   <span class="t-punc">[</span><span class="t-list">fr</span><span class="t-punc">, </span><span class="t-list">en</span><span class="t-punc">]</span>  <span class="t-cm"># bilingual</span></div>
+                <form class="term-input" autocomplete="off">
+                    <span class="t-prompt" aria-hidden="true">$</span>
+                    <span class="term-field">
+                        <input type="text" name="cmd" spellcheck="false" autocapitalize="off" placeholder=" " aria-label="Type a command, for example help" data-i18n-aria="termInputLabel">
+                        <span class="term-cursor" aria-hidden="true"></span>
+                    </span>
+                </form>
+                <div class="term-cmds" aria-label="Quick commands">
+                    <button type="button" data-cmd data-i18n="cmdProjects">projects</button>
+                    <button type="button" data-cmd>berlin</button>
+                    <button type="button" data-cmd>sport</button>
+                    <button type="button" data-cmd>contact</button>
+                    <button type="button" data-cmd>help</button>
+                </div>
+                <div class="term-status"><span><span class="term-dot" aria-hidden="true"></span><span data-i18n="termStatus">available</span> · Montréal <time class="term-clock">--:--</time></span><span>utf-8 · fr/en</span></div>
             </aside>
         </section>
 
@@ -526,5 +541,6 @@ mathis-pernias
     </footer>
 
     <script src="script.js"></script>
+    <script src="terminal.js"></script>
 </body>
 </html>
