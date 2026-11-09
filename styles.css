@@ -668,3 +668,22 @@ h1 em { color: var(--accent); }
 .stage.lit:last-child .stage-dot { border-color: var(--ok); background: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft), 0 0 16px var(--ok); }
 .stage.lit h3 { color: var(--accent); }
 .stage.lit:last-child h3 { color: var(--ok); }
+
+/* ---------- Burn easter egg ---------- */
+html.burning { overflow: hidden; }
+.burn-layer { position: fixed; inset: 0; z-index: 300; pointer-events: none; transition: opacity 1.2s ease; }
+.burn-layer.burn-out { opacity: 0; }
+.burn-field, .burn-fx { position: absolute; inset: 0; width: 100%; height: 100%; }
+.burn-field { image-rendering: auto; filter: blur(0.6px) saturate(1.1); }
+.burn-end {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: auto;
+    display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;
+    color: #e9e4dc; font: 600 1.4rem var(--sans); text-shadow: 0 0 18px rgba(255, 120, 40, .45);
+    animation: burn-end-in .8s ease both;
+}
+.burn-end button {
+    font: 600 0.9rem var(--mono); color: #140d08; background: #ff9a3d; border: 0; border-radius: 999px;
+    padding: 11px 22px; cursor: pointer; box-shadow: 0 0 30px rgba(255, 140, 50, .55);
+}
+.burn-end button:hover { background: #ffb469; }
+@keyframes burn-end-in { from { opacity: 0; transform: translate(-50%, -40%); } }

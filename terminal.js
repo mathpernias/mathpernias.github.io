@@ -105,7 +105,7 @@
                 ['whoami', t('who is this?', 'qui est-ce ?')],
                 ['clear', t('clear the screen', 'effacer l’écran')],
             ].forEach(([c, d]) => line('  <span class="t-list">' + c.padEnd(9) + '</span><span class="t-key">' + d + '</span>'));
-            line('<span class="t-cm">' + t('# psst… there is a hidden one', '# psst… il y en a une cachée') + '</span>');
+            line('<span class="t-cm">' + t('# psst… a few are hidden', '# psst… il y en a des cachées') + '</span>');
         },
         projects() {
             line(t('→ opening projects…', '→ ouverture des projets…'), 't-str');
@@ -127,6 +127,19 @@
         whoami() { line('mathis-pernias'); },
         clear() { out.innerHTML = ''; },
         techno() { startTechno(); },
+        burn() {
+            if (!window.siteBurn) return;
+            if (window.siteBurn.active) { line(t('already on fire 🔥', 'ça brûle déjà 🔥'), 't-key'); return; }
+            if (reduceMotion) { line(t('🔥 (animation off: reduced motion is on)', '🔥 (animation désactivée : mouvement réduit activé)'), 't-key'); return; }
+            if (techno) stopTechno();
+            line(t('🔥 igniting… press Esc to put it out', '🔥 mise à feu… Échap pour éteindre'), 't-err');
+            const r = term.getBoundingClientRect();
+            setTimeout(() => {
+                window.siteBurn.start({ x: r.left + r.width / 2, y: r.top + r.height * 0.6 }, () => {
+                    line(t('↻ site rebuilt. nothing was harmed, promise.', '↻ site reconstruit. rien n’a vraiment brûlé, promis.'), 't-cm');
+                });
+            }, 350);
+        },
         stop() {
             if (techno) { stopTechno(); line(t('■ party over. back to work.', '■ fin de la fête. retour au boulot.'), 't-key'); }
             else line(t('nothing to stop.', 'rien à arrêter.'), 't-key');
@@ -138,6 +151,7 @@
         aide: 'help', '?': 'help', projets: 'projects', projet: 'projects', project: 'projects',
         dashboard: 'berlin', marathon: 'berlin', email: 'contact', mail: 'contact',
         exit: 'stop', quit: 'stop', cls: 'clear', party: 'techno', rave: 'techno',
+        fire: 'burn', feu: 'burn', brule: 'burn', 'brûle': 'burn', incendie: 'burn',
     };
 
     function run(raw) {
