@@ -242,15 +242,15 @@ mathis-pernias
                     <ul class="chips"><li>Azure VMs</li><li>Self-hosted IR</li><li>ADF</li><li>Capacity analysis</li></ul>
                 </div>
                 <div class="case-body">
-                    <div class="par"><h4 data-i18n="lblProblem">Problem</h4><p data-i18n="c3P">The VM hosting our self-hosted integration runtime (SHIR) ran on a Standard_DS3_v2. Pipelines saw latency, and the question was whether to scale up, or whether the bottleneck was somewhere else.</p></div>
+                    <div class="par"><h4 data-i18n="lblProblem">Problem</h4><p data-i18n="c3P">The VM hosting our self-hosted integration runtime (SHIR) had 4 processors and 14 GiB of memory. Pipelines saw latency, and the question was whether to scale up, or whether the bottleneck was somewhere else.</p></div>
                     <div class="par"><h4 data-i18n="lblApproach">Approach</h4><p data-i18n="c3A">Analysed memory, CPU, API queues, concurrency and HTTP 429 responses. The VM was far from saturated; latency came from request concurrency and API rate limiting. Tuned ADF concurrency and validated the new size progressively from DEV to PROD.</p></div>
-                    <div class="par"><h4 data-i18n="lblOutcome">Outcome</h4><p data-i18n="c3O">Moved to D2ads_v5 (D4ads_v5 kept as a conservative fallback): ~30% lower VM/SHIR cost with the same expected service level.</p></div>
+                    <div class="par"><h4 data-i18n="lblOutcome">Outcome</h4><p data-i18n="c3O">Moved to a machine half the size (4 → 2 processors, 14 → 8 GiB of memory): about 30% lower cost, with the same level of service.</p></div>
                 </div>
                 <figure class="fig fig-cost">
                     <div class="spec spec-before">
                         <small data-i18n="before">before</small>
-                        <b>Standard_DS3_v2</b>
-                        <span>4 vCPU · 14 GiB</span>
+                        <b>4 vCPU · 14 GiB</b>
+                        <span data-i18n="specBefore">original machine</span>
                     </div>
                     <ul class="obs">
                         <li><span data-i18n="obsMem">memory used</span><b>5–6.5 GiB</b></li>
@@ -261,8 +261,8 @@ mathis-pernias
                     </ul>
                     <div class="spec spec-after">
                         <small data-i18n="after">after</small>
-                        <b>Standard_D2ads_v5</b>
-                        <span>2 vCPU · 8 GiB</span>
+                        <b>2 vCPU · 8 GiB</b>
+                        <span data-i18n="specAfter">half the size</span>
                     </div>
                     <div class="bars">
                         <div class="bar-row"><span data-i18n="before">before</span><div class="bar"><i style="width:100%"></i></div><b>100</b></div>
