@@ -189,7 +189,7 @@
         lights.setAttribute('aria-hidden', 'true');
         const banner = document.createElement('div');
         banner.className = 'rave-banner';
-        banner.innerHTML = '<span>🔊 TECHNOOOO PARTYYY · 175 BPM</span><button type="button">■ stop</button>';
+        banner.innerHTML = '<span>🔊 TECHNOOOO PARTYYY · 178 BPM</span><button type="button">■ stop</button>';
         banner.querySelector('button').addEventListener('click', () => commands.stop());
         document.body.append(lights, banner);
 
@@ -200,66 +200,133 @@
         const ctx = new AC();
         state.ctx = ctx;
         if (ctx.state === 'suspended') ctx.resume();
+        const now = ctx.currentTime;
         const master = ctx.createGain();
-        master.gain.setValueAtTime(0, ctx.currentTime);
-        master.gain.linearRampToValueAtTime(0.55, ctx.currentTime + 1.2);
+        master.gain.setValueAtTime(0, now);
+        master.gain.linearRampToValueAtTime(0.62, now + 1.5);
         const comp = ctx.createDynamicsCompressor();
-        comp.threshold.value = -14; comp.ratio.value = 6;
+        comp.threshold.value = -20; comp.knee.value = 6; comp.ratio.value = 8;
+        comp.attack.value = 0.003; comp.release.value = 0.12;
         master.connect(comp).connect(ctx.destination);
 
-        const shaper = ctx.createWaveShaper();
-        const curve = new Float32Array(1024);
-        for (let i = 0; i < 1024; i++) { const x = i / 512 - 1; curve[i] = Math.tanh(x * 6); }
-        shaper.curve = curve;
-        const kickBus = ctx.createGain(); kickBus.gain.value = 0.9;
-        shaper.connect(kickBus).connect(master);
+        function drive(amount) {
+            const ws = ctx.createWaveShaper(), c = new Float32Array(2048);
+            for (let i = 0; i < 2048; i++) { const x = i / 1024 - 1; c[i] = Math.tanh(x * amount); }
+            ws.curve = c; ws.oversample = '2x';
+            return ws;
+        }
+
+        // Kick: long distorted body + clean sub layer
+        const kickDrive = drive(11);
+        const kickTone = ctx.createBiquadFilter(); kickTone.type = 'lowpass'; kickTone.frequency.value = 2600;
+        const kickBus = ctx.createGain(); kickBus.gain.value = 0.85;
+        kickDrive.connect(kickTone).connect(kickBus).connect(master);
+
+        // Rolling bass: detuned square + saw, overdriven, dark low-pass
+        const bassDrive = drive(5);
+        const bassLP = ctx.createBiquadFilter(); bassLP.type = 'lowpass'; bassLP.Q.value = 5;
+        bassLP.frequency.value = 420;
+        const bassBus = ctx.createGain(); bassBus.gain.value = 0.5;
+        bassDrive.connect(bassLP).connect(bassBus).connect(master);
 
         const noise = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
         const nd = noise.getChannelData(0);
         for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
 
+        // Dark drone pad: E1 + B1 + low G, slow filter sweep
+        const padLP = ctx.createBiquadFilter(); padLP.type = 'lowpass'; padLP.frequency.value = 260; padLP.Q.value = 3;
+        const padGain = ctx.createGain(); padGain.gain.value = 0.055;
+        padLP.connect(padGain).connect(master);
+        const lfo = ctx.createOscillator(), lfoAmt = ctx.createGain();
+        lfo.frequency.value = 0.05; lfoAmt.gain.value = 170;
+        lfo.connect(lfoAmt).connect(padLP.frequency); lfo.start();
+        [[41.2, -7], [41.2, 6], [61.74, 0], [98.0, 4]].forEach(([f, cents]) => {
+            const o = ctx.createOscillator(); o.type = 'sawtooth';
+            o.frequency.value = f; o.detune.value = cents;
+            o.connect(padLP); o.start();
+        });
+
+        const E1 = 41.2;
+        const hz = semi => E1 * Math.pow(2, semi / 12);
+
         function kick(time) {
             const o = ctx.createOscillator(), g = ctx.createGain();
-            o.frequency.setValueAtTime(190, time);
-            o.frequency.exponentialRampToValueAtTime(46, time + 0.11);
-            g.gain.setValueAtTime(1, time);
-            g.gain.exponentialRampToValueAtTime(0.001, time + 0.32);
-            o.connect(g).connect(shaper);
-            o.start(time); o.stop(time + 0.34);
+            o.frequency.setValueAtTime(230, time);
+            o.frequency.exponentialRampToValueAtTime(50, time + 0.07);
+            o.frequency.exponentialRampToValueAtTime(38, time + 0.4);
+            g.gain.setValueAtTime(1.15, time);
+            g.gain.setValueAtTime(1.15, time + 0.04);
+            g.gain.exponentialRampToValueAtTime(0.001, time + 0.48);
+            o.connect(g).connect(kickDrive);
+            o.start(time); o.stop(time + 0.5);
+            const sub = ctx.createOscillator(), sg = ctx.createGain();
+            sub.frequency.setValueAtTime(55, time);
+            sub.frequency.exponentialRampToValueAtTime(40, time + 0.3);
+            sg.gain.setValueAtTime(0.75, time);
+            sg.gain.exponentialRampToValueAtTime(0.001, time + 0.34);
+            sub.connect(sg).connect(master);
+            sub.start(time); sub.stop(time + 0.36);
+        }
+        function rollingBass(time, semi, open) {
+            const f = hz(semi);
+            const g = ctx.createGain();
+            g.gain.setValueAtTime(0.0001, time);
+            g.gain.exponentialRampToValueAtTime(0.9, time + 0.008);
+            g.gain.exponentialRampToValueAtTime(0.001, time + 0.075);
+            g.connect(bassDrive);
+            [['square', 0], ['sawtooth', 9], ['sawtooth', -9]].forEach(([type, det]) => {
+                const o = ctx.createOscillator(); o.type = type;
+                o.frequency.setValueAtTime(f * 2, time); o.detune.value = det;
+                o.connect(g); o.start(time); o.stop(time + 0.08);
+            });
+            bassLP.frequency.cancelScheduledValues(time);
+            bassLP.frequency.setValueAtTime(open, time);
+            bassLP.frequency.exponentialRampToValueAtTime(180, time + 0.07);
+            const sub = ctx.createOscillator(), sg = ctx.createGain();
+            sub.frequency.setValueAtTime(f, time);
+            sg.gain.setValueAtTime(0.32, time);
+            sg.gain.exponentialRampToValueAtTime(0.001, time + 0.07);
+            sub.connect(sg).connect(master);
+            sub.start(time); sub.stop(time + 0.08);
         }
         function hat(time, open) {
             const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
-            s.buffer = noise; f.type = 'highpass'; f.frequency.value = 7500;
-            g.gain.setValueAtTime(open ? 0.16 : 0.07, time);
-            g.gain.exponentialRampToValueAtTime(0.001, time + (open ? 0.12 : 0.035));
+            s.buffer = noise; f.type = 'highpass'; f.frequency.value = 9000;
+            g.gain.setValueAtTime(open ? 0.07 : 0.03, time);
+            g.gain.exponentialRampToValueAtTime(0.001, time + (open ? 0.09 : 0.025));
             s.connect(f).connect(g).connect(master);
-            s.start(time, Math.random() * 0.5); s.stop(time + 0.14);
+            s.start(time, Math.random() * 0.5); s.stop(time + 0.1);
         }
-        function clap(time) {
+        function snare(time) {
             const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
-            s.buffer = noise; f.type = 'bandpass'; f.frequency.value = 1600; f.Q.value = 0.9;
-            g.gain.setValueAtTime(0.35, time);
-            g.gain.exponentialRampToValueAtTime(0.001, time + 0.16);
+            s.buffer = noise; f.type = 'bandpass'; f.frequency.value = 1100; f.Q.value = 0.7;
+            g.gain.setValueAtTime(0.26, time);
+            g.gain.exponentialRampToValueAtTime(0.001, time + 0.22);
             s.connect(f).connect(g).connect(master);
-            s.start(time, Math.random() * 0.5); s.stop(time + 0.18);
+            s.start(time, Math.random() * 0.5); s.stop(time + 0.24);
         }
         function acid(time, semi, cutoff) {
             const o = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
             o.type = 'sawtooth';
-            o.frequency.setValueAtTime(55 * Math.pow(2, semi / 12), time);
-            f.type = 'lowpass'; f.Q.value = 14;
-            f.frequency.setValueAtTime(cutoff * 4, time);
-            f.frequency.exponentialRampToValueAtTime(cutoff, time + 0.1);
-            g.gain.setValueAtTime(0.22, time);
-            g.gain.exponentialRampToValueAtTime(0.001, time + 0.13);
+            o.frequency.setValueAtTime(hz(semi + 24), time);
+            f.type = 'lowpass'; f.Q.value = 18;
+            f.frequency.setValueAtTime(cutoff * 3, time);
+            f.frequency.exponentialRampToValueAtTime(cutoff, time + 0.09);
+            g.gain.setValueAtTime(0.09, time);
+            g.gain.exponentialRampToValueAtTime(0.001, time + 0.12);
             o.connect(f).connect(g).connect(master);
-            o.start(time); o.stop(time + 0.14);
+            o.start(time); o.stop(time + 0.13);
         }
 
-        const BPM = 175, step16 = 60 / BPM / 4;
-        const bass = [null, 0, 12, 0, null, 0, 12, 3, null, 0, 12, 0, null, 7, 12, 5];
-        const palette = ['#16002b', '#001a33', '#2b0019', '#002417', '#1f1400', '#001f2b'];
-        let step = 0, next = ctx.currentTime + 0.15;
+        const BPM = 178, step16 = 60 / BPM / 4;
+        // E phrygian, rolling bass on the three 16ths between kicks (semitones from E1)
+        const roll = [
+            [0, 0, 0], [0, 0, 1], [0, 0, 0], [0, 3, 1],
+            [0, 0, 0], [0, 0, 1], [0, 0, 0], [7, 6, 1],
+        ];
+        const acidLine = [null, 12, null, 13, 12, null, 15, null, 12, null, 13, null, 10, 12, null, 13];
+        const palette = ['#14001f', '#00121f', '#1f0010', '#001a10', '#160b00', '#0b0019'];
+        let step = 0, next = ctx.currentTime + 0.2;
 
         function visualBeat(n) {
             if (reduceMotion) return;  // music only, no pulsing colours
@@ -271,15 +338,20 @@
 
         function schedule() {
             while (next < ctx.currentTime + 0.12) {
-                const s = step % 16, bar = Math.floor(step / 16);
+                const s = step % 16, bar = Math.floor(step / 16), phrase = bar % 16;
+                const beat = Math.floor(s / 4);
                 if (s % 4 === 0) {
                     kick(next);
                     const beatNo = step / 4;
                     setTimeout(() => techno && visualBeat(beatNo), Math.max(0, (next - ctx.currentTime) * 1000));
+                } else {
+                    const pattern = roll[(bar % 2) * 4 + beat];
+                    const open = 380 + 520 * (0.5 + 0.5 * Math.sin(step / 64));
+                    rollingBass(next, pattern[(s % 4) - 1], open);
                 }
-                if (s % 4 === 2) hat(next, true); else if (s % 2 === 1) hat(next, false);
-                if ((s === 4 || s === 12) && bar % 2 === 1) clap(next);
-                if (bass[s] !== null) acid(next, bass[s] + (bar % 8 >= 6 ? 3 : 0), 260 + 900 * (0.5 + 0.5 * Math.sin(step / 40)));
+                if (s % 4 === 2) hat(next, true); else if (s % 2 === 1 && bar % 2 === 1) hat(next, false);
+                if (s === 12 && bar % 4 === 3) snare(next);
+                if (phrase >= 8 && acidLine[s] !== null) acid(next, acidLine[s], 220 + 380 * (0.5 + 0.5 * Math.sin(step / 24)));
                 next += step16;
                 step++;
             }
