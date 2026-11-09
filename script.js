@@ -167,7 +167,7 @@
         m1: 'de coût VM sur notre runtime d’intégration auto-hébergé, après une étude de capacité',
         m2: 'identifiant en clair restant dans la configuration des pipelines',
         m3: 'expériences en données entre la France, le Danemark et le Canada',
-        m4: 'diplômes : maîtrise Polytechnique Montréal, ingénieur Télécom Physique Strasbourg',
+        m4: 'diplômes : maîtrise Polytechnique Montréal, master Université de Strasbourg, ingénieur Télécom Physique Strasbourg',
 
         fKicker: 'Projet vedette · à essayer',
         fTitle: 'Où finiriez-<em>vous</em> au Marathon de Berlin&nbsp;?',
@@ -266,6 +266,7 @@
         eduTitle: 'Formation',
         e1: 'Maîtrise en génie informatique',
         e1Text: 'Maîtrise professionnelle, orientation ingénierie et analytique des données.',
+        e3: 'Master Informatique', e3Text: 'Parcours Sciences des données et systèmes complexes.',
         e2: 'Diplôme d’ingénieur, science des données et IA',
 
         contactTitle: 'Parlons <span class="nw"><em>données</em>.</span>',
