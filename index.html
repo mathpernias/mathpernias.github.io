@@ -113,29 +113,6 @@ mathis-pernias
         </section>
 
 
-        <!-- ============ FEATURED ============ -->
-        <section id="featured" class="section wrap">
-            <article class="featured reveal">
-                <a class="featured-media media-link" href="https://berlinmarathondashboard.onrender.com/" target="_blank" rel="noopener noreferrer">
-                    <video class="media" autoplay muted loop playsinline preload="none" poster="berlin-dashboard.webp" aria-label="Tour of the Berlin Marathon dashboard">
-                        <source src="berlin-dashboard.webm" type="video/webm">
-                    </video>
-                </a>
-                <div class="featured-body">
-                    <p class="featured-kicker"><span class="section-num">★</span> <span data-i18n="fKicker">Featured project · try it</span></p>
-                    <h2 data-i18n="fTitle">Where would <em>you</em> finish in the Berlin Marathon?</h2>
-                    <p class="featured-hook" data-i18n="fHook">Enter your finish time and see where you'd rank among 780,000 runners.</p>
-                    <p data-i18n="fText">An interactive dashboard built on 25 years of Berlin Marathon results: world records, every edition up close, the weather on race day, and who runs at the front.</p>
-                    <div class="actions">
-                        <a href="https://berlinmarathondashboard.onrender.com/" class="btn btn-solid" target="_blank" rel="noopener noreferrer" data-i18n="fCta">Try the dashboard ↗</a>
-                        <a href="https://github.com/mathpernias/BerlinMarathonDashboard" class="btn btn-line" target="_blank" rel="noopener noreferrer" data-i18n="fCode">Source code</a>
-                    </div>
-                    <p class="link-note" data-i18n="p4Note">Free hosting: the first visit can take about a minute to wake the server.</p>
-                    <ul class="chips"><li>Python</li><li>Pandas</li><li>Dash</li><li>Plotly</li><li>Docker</li><li>Render</li></ul>
-                </div>
-            </article>
-        </section>
-
         <!-- ============ DATA JOURNEY ============ -->
         <section id="journey" class="section wrap">
             <header class="section-head">
@@ -150,7 +127,7 @@ mathis-pernias
                     <h3 data-i18n="jCollect">Collect</h3>
                     <p data-i18n="jCollectText">Pull data from apps, APIs and files, on a schedule, without overloading anyone.</p>
                     <p class="stage-tech">ADF · REST APIs · SHIR · ETL/ELT</p>
-                    <a class="stage-link" href="#case-c" data-i18n="jCollectLink">case C: ingestion sizing →</a>
+                    <a class="stage-link" href="#case-c" data-i18n="jCollectLink">case D: ingestion sizing →</a>
                 </li>
                 <li class="stage">
                     <span class="stage-dot" aria-hidden="true"></span>
@@ -158,7 +135,7 @@ mathis-pernias
                     <h3 data-i18n="jProtect">Protect</h3>
                     <p data-i18n="jProtectText">Secrets stay in a vault; personal data is masked before it leaves production.</p>
                     <p class="stage-tech">Key Vault · managed identity · RBAC · PII masking</p>
-                    <a class="stage-link" href="#case-a" data-i18n="jProtectLink">cases A &amp; B: secrets, PII →</a>
+                    <a class="stage-link" href="#case-a" data-i18n="jProtectLink">cases B &amp; C: secrets, PII →</a>
                 </li>
                 <li class="stage">
                     <span class="stage-dot" aria-hidden="true"></span>
@@ -174,7 +151,7 @@ mathis-pernias
                     <h3 data-i18n="jDeliver">Deliver</h3>
                     <p data-i18n="jDeliverText">Clean, documented models that feed dashboards, reports and ML.</p>
                     <p class="stage-tech">Snowflake · Power BI · Databricks</p>
-                    <a class="stage-link" href="#case-d" data-i18n="jDeliverLink">case D: docs-as-code →</a>
+                    <a class="stage-link" href="#case-dv" data-i18n="jDeliverLink">case A: Data Vault model →</a>
                 </li>
             </ol>
         </section>
@@ -184,13 +161,48 @@ mathis-pernias
             <header class="section-head">
                 <span class="section-num">02</span>
                 <h2 data-i18n="workTitle">Selected <em>work</em></h2>
-                <p data-i18n="workLead">Four projects from my work at iA Financial Group: context, approach, outcome.</p>
+                <p data-i18n="workLead">Five projects from my work at iA Financial Group: context, approach, outcome.</p>
             </header>
+
+            <!-- Case: data vault -->
+            <article class="case reveal" id="case-dv">
+                <div class="case-meta">
+                    <span class="case-idx">A</span>
+                    <p class="case-tag" data-i18n="c0Tag">Modelling · Data Vault 2.0</p>
+                    <h3 data-i18n="c0Plain">One customer, one history, whatever the source system</h3>
+                    <p class="case-tech" data-i18n="c0Title">A Data Vault 2.0 model, from staging to star-schema marts</p>
+                    <ul class="chips"><li>Data Vault 2.0</li><li>SQL</li><li>Hash diff</li><li>Star schema</li></ul>
+                </div>
+                <div class="case-body">
+                    <div class="par"><h4 data-i18n="lblProblem">Problem</h4><p data-i18n="c0P">Customer data arrives from several systems, with duplicates and different keys from one system to the next. There was no single view of the customer.</p></div>
+                    <div class="par"><h4 data-i18n="lblApproach">Approach</h4><p data-i18n="c0A">Hubs for the business keys (customer, policy, advisor), links for the relationships between them, and satellites for attribute history, with a hash diff to detect changes. The raw vault loads data as-is; the business vault applies business rules and deduplication (golden record); data marts expose a star schema to BI teams.</p></div>
+                    <div class="par"><h4 data-i18n="lblOutcome">Outcome</h4><p data-i18n="c0O">One historised customer, loads that can be replayed safely, and new sources added without breaking the model.</p></div>
+                </div>
+                <figure class="fig fig-dv">
+                    <div class="fig-row">
+                        <span class="fig-label" data-i18n="dvFlowLbl">flow</span>
+                        <div class="flow">
+                            <div class="node"><small>stg</small><span>Staging</span></div>
+                            <div class="edge"><i data-i18n="dvE1">hash keys</i></div>
+                            <div class="node"><small>rdv</small><span>Raw Vault</span></div>
+                            <div class="edge"><i data-i18n="dvE2">rules · golden record</i></div>
+                            <div class="node"><small>bv</small><span>Business Vault</span></div>
+                            <div class="edge"><i data-i18n="dvE3">star schema</i></div>
+                            <div class="node"><small>dm</small><span>Data Marts</span></div>
+                        </div>
+                    </div>
+                    <div class="fig-row fig-row-top">
+                        <span class="fig-label" data-i18n="dvModelLbl">model</span>
+                        <div class="dv-scroll"><svg class="dv-model" viewBox="0 0 700 386" role="img" aria-labelledby="dv-title"><title id="dv-title">Data Vault model: customer, policy and advisor hubs, links between them, and satellites holding attribute history</title><path d="M215 72 L140 112" class="dv-rel"/><path d="M295 72 L310 112" class="dv-rel"/><path d="M470 72 L395 112" class="dv-rel"/><path d="M550 72 L565 112" class="dv-rel"/><path d="M95 186 V214" class="dv-rel"/><path d="M350 186 V214" class="dv-rel"/><path d="M605 186 V214" class="dv-rel"/><path d="M160 186 V198 H198 V341 H180" class="dv-rel"/><g class="dv-link"><rect x="170" y="14" width="170" height="58" rx="4" class="dv-box"/><text x="180" y="31" class="dv-name">LNK_CUSTOMER_POLICY</text><text x="330" y="31" class="dv-tag" text-anchor="end">LINK</text><line x1="170" y1="39" x2="340" y2="39" class="dv-sep"/><text x="180" y="54" class="dv-col">hk_customer_policy</text><text x="330" y="54" class="dv-key" text-anchor="end">PK</text><text x="180" y="68" class="dv-col">hk_customer · hk_policy</text><text x="330" y="68" class="dv-key" text-anchor="end">FK</text></g><g class="dv-link"><rect x="425" y="14" width="170" height="58" rx="4" class="dv-box"/><text x="435" y="31" class="dv-name">LNK_POLICY_ADVISOR</text><text x="585" y="31" class="dv-tag" text-anchor="end">LINK</text><line x1="425" y1="39" x2="595" y2="39" class="dv-sep"/><text x="435" y="54" class="dv-col">hk_policy_advisor</text><text x="585" y="54" class="dv-key" text-anchor="end">PK</text><text x="435" y="68" class="dv-col">hk_policy · hk_advisor</text><text x="585" y="68" class="dv-key" text-anchor="end">FK</text></g><g class="dv-hub"><rect x="10" y="112" width="170" height="74" rx="4" class="dv-box"/><text x="20" y="129" class="dv-name">HUB_CUSTOMER</text><text x="170" y="129" class="dv-tag" text-anchor="end">HUB</text><line x1="10" y1="137" x2="180" y2="137" class="dv-sep"/><text x="20" y="152" class="dv-col">hk_customer</text><text x="170" y="152" class="dv-key" text-anchor="end">PK</text><text x="20" y="166" class="dv-col">customer_bk</text><text x="170" y="166" class="dv-key" text-anchor="end">BK</text><text x="20" y="180" class="dv-col">load_dts · record_src</text></g><g class="dv-hub"><rect x="265" y="112" width="170" height="74" rx="4" class="dv-box"/><text x="275" y="129" class="dv-name">HUB_POLICY</text><text x="425" y="129" class="dv-tag" text-anchor="end">HUB</text><line x1="265" y1="137" x2="435" y2="137" class="dv-sep"/><text x="275" y="152" class="dv-col">hk_policy</text><text x="425" y="152" class="dv-key" text-anchor="end">PK</text><text x="275" y="166" class="dv-col">policy_bk</text><text x="425" y="166" class="dv-key" text-anchor="end">BK</text><text x="275" y="180" class="dv-col">load_dts · record_src</text></g><g class="dv-hub"><rect x="520" y="112" width="170" height="74" rx="4" class="dv-box"/><text x="530" y="129" class="dv-name">HUB_ADVISOR</text><text x="680" y="129" class="dv-tag" text-anchor="end">HUB</text><line x1="520" y1="137" x2="690" y2="137" class="dv-sep"/><text x="530" y="152" class="dv-col">hk_advisor</text><text x="680" y="152" class="dv-key" text-anchor="end">PK</text><text x="530" y="166" class="dv-col">advisor_bk</text><text x="680" y="166" class="dv-key" text-anchor="end">BK</text><text x="530" y="180" class="dv-col">load_dts · record_src</text></g><g class="dv-sat"><rect x="10" y="214" width="170" height="74" rx="4" class="dv-box"/><text x="20" y="231" class="dv-name">SAT_CUSTOMER_CRM</text><text x="170" y="231" class="dv-tag" text-anchor="end">SAT</text><line x1="10" y1="239" x2="180" y2="239" class="dv-sep"/><text x="20" y="254" class="dv-col">hk_customer · load_dts</text><text x="170" y="254" class="dv-key" text-anchor="end">PK</text><text x="20" y="268" class="dv-col">hash_diff</text><text x="20" y="282" class="dv-col">name, email, phone…</text></g><g class="dv-sat"><rect x="10" y="304" width="170" height="74" rx="4" class="dv-box"/><text x="20" y="321" class="dv-name">SAT_CUSTOMER_WEB</text><text x="170" y="321" class="dv-tag" text-anchor="end">SAT</text><line x1="10" y1="329" x2="180" y2="329" class="dv-sep"/><text x="20" y="344" class="dv-col">hk_customer · load_dts</text><text x="170" y="344" class="dv-key" text-anchor="end">PK</text><text x="20" y="358" class="dv-col">hash_diff</text><text x="20" y="372" class="dv-col">login, consents…</text></g><g class="dv-sat"><rect x="265" y="214" width="170" height="74" rx="4" class="dv-box"/><text x="275" y="231" class="dv-name">SAT_POLICY</text><text x="425" y="231" class="dv-tag" text-anchor="end">SAT</text><line x1="265" y1="239" x2="435" y2="239" class="dv-sep"/><text x="275" y="254" class="dv-col">hk_policy · load_dts</text><text x="425" y="254" class="dv-key" text-anchor="end">PK</text><text x="275" y="268" class="dv-col">hash_diff</text><text x="275" y="282" class="dv-col">status, premium, start…</text></g><g class="dv-sat"><rect x="520" y="214" width="170" height="74" rx="4" class="dv-box"/><text x="530" y="231" class="dv-name">SAT_ADVISOR</text><text x="680" y="231" class="dv-tag" text-anchor="end">SAT</text><line x1="520" y1="239" x2="690" y2="239" class="dv-sep"/><text x="530" y="254" class="dv-col">hk_advisor · load_dts</text><text x="680" y="254" class="dv-key" text-anchor="end">PK</text><text x="530" y="268" class="dv-col">hash_diff</text><text x="530" y="282" class="dv-col">name, branch…</text></g></svg></div>
+                    </div>
+                    <figcaption data-i18n="dvCap">Simplified model with fictional entities.</figcaption>
+                </figure>
+            </article>
 
             <!-- Case: secrets -->
             <article class="case reveal" id="case-a">
                 <div class="case-meta">
-                    <span class="case-idx">A</span>
+                    <span class="case-idx">B</span>
                     <p class="case-tag" data-i18n="c1Tag">Security · Azure Data Factory</p>
                     <h3 data-i18n="c1Plain">No more passwords sitting in plain text in our data pipelines</h3>
                     <p class="case-tech" data-i18n="c1Title">Moving pipeline credentials into Azure Key Vault</p>
@@ -228,7 +240,7 @@ mathis-pernias
             <!-- Case: PII -->
             <article class="case reveal" id="case-b">
                 <div class="case-meta">
-                    <span class="case-idx">B</span>
+                    <span class="case-idx">C</span>
                     <p class="case-tag" data-i18n="c2Tag">Privacy · Snowflake</p>
                     <h3 data-i18n="c2Plain">Testing on realistic data without exposing a single customer</h3>
                     <p class="case-tech" data-i18n="c2Title">Config-driven PII masking for test environments</p>
@@ -270,7 +282,7 @@ mathis-pernias
             <!-- Case: cost -->
             <article class="case reveal" id="case-c">
                 <div class="case-meta">
-                    <span class="case-idx">C</span>
+                    <span class="case-idx">D</span>
                     <p class="case-tag" data-i18n="c3Tag">FinOps · Azure</p>
                     <h3 data-i18n="c3Plain">Same service, 30% cheaper: the server was never the problem</h3>
                     <p class="case-tech" data-i18n="c3Title">Right-sizing the integration runtime VM: −30% cost</p>
@@ -310,7 +322,7 @@ mathis-pernias
             <!-- Case: docs as code -->
             <article class="case reveal" id="case-d">
                 <div class="case-meta">
-                    <span class="case-idx">D</span>
+                    <span class="case-idx">E</span>
                     <p class="case-tag" data-i18n="c4Tag">DevOps · Docs-as-code</p>
                     <h3 data-i18n="c4Plain">Documentation that updates itself with the code</h3>
                     <p class="case-tech" data-i18n="c4Title">A docs-as-code pipeline that publishes to SharePoint</p>
@@ -334,6 +346,29 @@ mathis-pernias
                         <div class="node node-ok"><small>publish</small><span>SharePoint</span></div>
                     </div>
                 </figure>
+            </article>
+        </section>
+
+        <!-- ============ FEATURED ============ -->
+        <section id="featured" class="section wrap">
+            <article class="featured reveal">
+                <a class="featured-media media-link" href="https://berlinmarathondashboard.onrender.com/" target="_blank" rel="noopener noreferrer">
+                    <video class="media" autoplay muted loop playsinline preload="none" poster="berlin-dashboard.webp" aria-label="Tour of the Berlin Marathon dashboard">
+                        <source src="berlin-dashboard.webm" type="video/webm">
+                    </video>
+                </a>
+                <div class="featured-body">
+                    <p class="featured-kicker"><span class="section-num">★</span> <span data-i18n="fKicker">Featured project · try it</span></p>
+                    <h2 data-i18n="fTitle">Where would <em>you</em> finish in the Berlin Marathon?</h2>
+                    <p class="featured-hook" data-i18n="fHook">Enter your finish time and see where you'd rank among 780,000 runners.</p>
+                    <p data-i18n="fText">An interactive dashboard built on 25 years of Berlin Marathon results: world records, every edition up close, the weather on race day, and who runs at the front.</p>
+                    <div class="actions">
+                        <a href="https://berlinmarathondashboard.onrender.com/" class="btn btn-solid" target="_blank" rel="noopener noreferrer" data-i18n="fCta">Try the dashboard ↗</a>
+                        <a href="https://github.com/mathpernias/BerlinMarathonDashboard" class="btn btn-line" target="_blank" rel="noopener noreferrer" data-i18n="fCode">Source code</a>
+                    </div>
+                    <p class="link-note" data-i18n="p4Note">Free hosting: the first visit can take about a minute to wake the server.</p>
+                    <ul class="chips"><li>Python</li><li>Pandas</li><li>Dash</li><li>Plotly</li><li>Docker</li><li>Render</li></ul>
+                </div>
             </article>
         </section>
 

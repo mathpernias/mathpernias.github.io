@@ -734,3 +734,19 @@ html.egg-gravity, html.egg-gravity body { user-select: none; -webkit-user-select
 .egg-game-x:hover { color: var(--text); border-color: var(--accent); }
 .egg-game canvas { display: block; touch-action: none; cursor: pointer; }
 .egg-game-hint { padding: 8px 14px; border-top: 1px solid var(--line); font: 0.72rem var(--mono); color: var(--text-3); }
+
+/* ---------- Data Vault case: deliberately plain technical drawing ---------- */
+.fig-dv { background-image: none; }
+.fig-row-top { align-items: start; }
+.fig-row-top .fig-label { padding-top: 4px; }
+.dv-scroll { overflow-x: auto; min-width: 0; }
+.dv-model { display: block; width: 100%; min-width: 620px; height: auto; }
+.dv-box { fill: var(--bg-2); stroke: var(--line-2); stroke-width: 1; }
+.dv-hub .dv-box { stroke: var(--text-3); stroke-width: 1.4; }
+.dv-link .dv-box { stroke-dasharray: 4 3; }
+.dv-sep { stroke: var(--line); stroke-width: 1; }
+.dv-rel { fill: none; stroke: var(--text-3); stroke-width: 1; }
+.dv-name { font: 600 10.5px var(--mono); fill: var(--text); }
+.dv-tag { font: 500 8.5px var(--mono); fill: var(--text-3); letter-spacing: 0.08em; }
+.dv-col { font: 9.5px var(--mono); fill: var(--text-2); }
+.dv-key { font: 500 8.5px var(--mono); fill: var(--text-3); }
