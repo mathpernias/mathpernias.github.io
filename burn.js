@@ -81,7 +81,7 @@
     function burn(origin, onEnd) {
         if (active) return false;
         const W = window.innerWidth, H = window.innerHeight;
-        const CELL = 4, GW = Math.ceil(W / CELL), GH = Math.ceil(H / CELL);
+        const CELL = W * H > 2600000 ? 3 : 2, GW = Math.ceil(W / CELL), GH = Math.ceil(H / CELL);
         const noise = makeNoise(Math.random() * 1e9);
 
         const wrap = document.createElement('div');
@@ -105,7 +105,7 @@
         // ignition time per cell: distance from origin(s) + noise => ragged, organic front
         const ox = origin.x / CELL, oy = origin.y / CELL;
         const far = Math.max(Math.hypot(ox, oy), Math.hypot(GW - ox, oy), Math.hypot(ox, GH - oy), Math.hypot(GW - ox, GH - oy));
-        const SPREAD = 6.2;  // seconds for the front to reach the farthest corner
+        const SPREAD = 13;   // seconds for the front to reach the farthest corner
         const sx = GW * (0.15 + Math.random() * 0.2), sy = GH * (0.75 + Math.random() * 0.2); // second ignition point
         const ig = new Float32Array(GW * GH);
         const grain = new Uint8Array(GW * GH);
@@ -116,8 +116,8 @@
                 const i = y * GW + x;
                 const d1 = Math.hypot(x - ox, (y - oy) * 1.1) / far;
                 const d2 = 0.35 + Math.hypot(x - sx, y - sy) / far;
-                const n = noise(x * 0.035, y * 0.035);
-                const v = Math.max(0, (Math.min(d1, d2) + n * 0.22) * SPREAD + 0.15);
+                const n = noise(x * CELL * 0.0088, y * CELL * 0.0088) + noise(x * CELL * 0.045, y * CELL * 0.045) * 0.18;
+                const v = Math.max(0, (Math.min(d1, d2) + n * 0.2) * SPREAD + 0.3);
                 ig[i] = v;
                 if (v > maxIg) maxIg = v;
                 grain[i] = Math.floor(Math.random() * 14);
@@ -142,17 +142,17 @@
             for (let i = 0, j = 0; i < ig.length; i++, j += 4) {
                 const d = t - ig[i];
                 let r = 0, gg = 0, b = 0, a = 0;
-                if (d < -1.1) { a = 0; }
+                if (d < -1.9) { a = 0; }
                 else if (d < 0) {                       // scorching: paper browns ahead of the flame
-                    const k = (d + 1.1) / 1.1;
+                    const k = (d + 1.9) / 1.9;
                     r = 92 - 40 * k; gg = 52 - 30 * k; b = 18 - 8 * k; a = 255 * Math.pow(k, 1.6) * 0.92;
-                } else if (d < 0.38) {                  // burning band: white-hot edge -> orange -> red embers
-                    const k = d / 0.38, f = 0.8 + 0.2 * Math.sin(t * 17 + phase[i]);
+                } else if (d < 0.7) {                  // burning band: white-hot edge -> orange -> red embers
+                    const k = d / 0.7, f = 0.8 + 0.2 * Math.sin(t * 11 + phase[i]);
                     r = 255 * f; gg = (238 - 190 * k) * f; b = (150 - 145 * k) * f; a = 255;
-                } else if (d < 1.5) {                   // cooling char, embers dying out unevenly
-                    const k = Math.min(1, (d - 0.38) / 1.12 + (Math.sin(phase[i] * 3) * 0.12));
+                } else if (d < 2.6) {                   // cooling char, embers dying out unevenly
+                    const k = Math.min(1, (d - 0.7) / 1.9 + (Math.sin(phase[i] * 3) * 0.12));
                     r = 170 * (1 - k) + 16 * k; gg = 36 * (1 - k) + 13 * k; b = 6 * (1 - k) + 11 * k; a = 255;
-                } else if (d < 1.6) {
+                } else if (d < 2.7) {
                     const k = 1;
                     r = 150 * (1 - k) + 16 * k; gg = 34 * (1 - k) + 13 * k; b = 6 * (1 - k) + 11 * k; a = 255;
                 } else {                                // ash with grain and the odd ember
@@ -164,11 +164,11 @@
             fctx.putImageData(img, 0, 0);
 
             // ---- spawn flames / smoke / sparks along the active front ----
-            if (t < maxIg + 0.6) {
-                for (let k = 0; k < 900 && parts.length < 1400; k++) {
+            if (t < maxIg + 0.9) {
+                for (let k = 0; k < 3000 && parts.length < 1400; k++) {
                     const i = (Math.random() * ig.length) | 0;
                     const d = t - ig[i];
-                    if (d < 0 || d > 0.45) continue;
+                    if (d < 0 || d > 0.8 || Math.random() > 0.55) continue;
                     const x = (i % GW) * CELL + Math.random() * CELL, y = ((i / GW) | 0) * CELL;
                     const roll = Math.random();
                     if (roll < 0.62) parts.push({ k: 'f', x, y, vx: (Math.random() - 0.5) * 30, vy: -70 - Math.random() * 110, life: 0, max: 0.35 + Math.random() * 0.6, s: 10 + Math.random() * 26 });
@@ -213,7 +213,7 @@
                 if (p.k === 'f') p.vy -= 60 * dt;
             }
 
-            if (!finished && t > maxIg + 1.8) {
+            if (!finished && t > maxIg + 3) {
                 finished = true;
                 if (audio) audio.fade(2.5);
                 showRebuild();
