@@ -127,11 +127,35 @@
         whoami() { line('mathis-pernias'); },
         clear() { out.innerHTML = ''; },
         techno() { startTechno(); },
+        drop(value) {
+            if (!/drop\s+table/i.test(value || '')) { line(t('usage: DROP TABLE portfolio;', 'usage : DROP TABLE portfolio;'), 't-key'); return; }
+            if (!eggReady()) return;
+            line('<span class="t-err">' + t('⚠ dropping table portfolio…', '⚠ suppression de la table portfolio…') + '</span>');
+            setTimeout(() => window.siteEggs.dropTable(n => line('<span class="t-cm">-- ROLLBACK · ' + n + t(' rows restored', ' lignes restaurées') + ' 😅</span>')), 400);
+        },
+        winter() {
+            if (!window.siteEggs) return;
+            if (window.siteEggs.active === 'winter') { window.siteEggs.stopAll(); return; }
+            if (!eggReady()) return;
+            line(t('❄️ winter is coming to Montréal… move the cursor to melt the snow · stop / Esc', '❄️ l’hiver arrive à Montréal… bouge la souris pour faire fondre la neige · stop / Échap'), 't-str');
+            window.siteEggs.winter(() => line(t('☀️ spring is back.', '☀️ le printemps est revenu.'), 't-cm'));
+        },
+        gravity() {
+            if (!eggReady()) return;
+            line(t('🍎 Newton says hi. drag & throw things · Esc to tidy up', '🍎 Newton te salue. attrape et lance les éléments · Échap pour ranger'), 't-str');
+            setTimeout(() => window.siteEggs.gravity(() => line(t('↺ everything back in place.', '↺ tout est rentré dans l’ordre.'), 't-cm')), 300);
+        },
+        run() {
+            if (!eggReady(true)) return;
+            line(t('🏃 lacing up… goal: 42.195 km', '🏃 on lace les chaussures… objectif : 42,195 km'), 't-str');
+            window.siteEggs.run(m => line(t('🏁 you ran ', '🏁 tu as couru ') + (m / 1000).toFixed(1).replace('.', isFr() ? ',' : '.') + ' km', 't-cm'));
+        },
         burn() {
             if (!window.siteBurn) return;
             if (window.siteBurn.active) { line(t('already on fire 🔥', 'ça brûle déjà 🔥'), 't-key'); return; }
             if (reduceMotion) { line(t('🔥 (animation off: reduced motion is on)', '🔥 (animation désactivée : mouvement réduit activé)'), 't-key'); return; }
             if (techno) stopTechno();
+            if (window.siteEggs) window.siteEggs.stopAll();
             line(t('🔥 igniting… press Esc to put it out', '🔥 mise à feu… Échap pour éteindre'), 't-err');
             const r = term.getBoundingClientRect();
             setTimeout(() => {
@@ -141,6 +165,7 @@
             }, 350);
         },
         stop() {
+            if (window.siteEggs && window.siteEggs.active) { window.siteEggs.stopAll(); line(t('■ stopped.', '■ arrêté.'), 't-key'); return; }
             if (techno) { stopTechno(); line(t('■ party over. back to work.', '■ fin de la fête. retour au boulot.'), 't-key'); }
             else line(t('nothing to stop.', 'rien à arrêter.'), 't-key');
         },
@@ -152,7 +177,18 @@
         dashboard: 'berlin', marathon: 'berlin', email: 'contact', mail: 'contact',
         exit: 'stop', quit: 'stop', cls: 'clear', party: 'techno', rave: 'techno',
         fire: 'burn', feu: 'burn', brule: 'burn', 'brûle': 'burn', incendie: 'burn',
+        hiver: 'winter', snow: 'winter', neige: 'winter', gravite: 'gravity', 'gravité': 'gravity', newton: 'gravity',
+        courir: 'run', cours: 'run', jeu: 'run', game: 'run',
     };
+
+    function eggReady(allowReduced) {
+        if (!window.siteEggs) return false;
+        if (window.siteBurn && window.siteBurn.active) { line(t('put the fire out first 🔥', 'éteins d’abord le feu 🔥'), 't-key'); return false; }
+        if (window.siteEggs.reduce && !allowReduced) { line(t('(animation off: reduced motion is on)', '(animation désactivée : mouvement réduit activé)'), 't-key'); return false; }
+        if (techno) stopTechno();
+        window.siteEggs.stopAll();
+        return true;
+    }
 
     function run(raw) {
         const value = raw.trim();
@@ -160,7 +196,7 @@
         if (!value) return;
         const word = value.toLowerCase().split(/\s+/)[0];
         const name = commands[word] ? word : aliases[word];
-        if (name) commands[name]();
+        if (name) commands[name](value);
         else line('zsh: ' + t('command not found', 'commande introuvable') + ': ' + esc(word) +
                   ' <span class="t-cm">— ' + t('try help', 'essaie help') + '</span>', 't-err');
     }
