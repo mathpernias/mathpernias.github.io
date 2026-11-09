@@ -43,14 +43,21 @@
         navWork: 'Réalisations', navProjects: 'Projets', navStack: 'Stack', navExperience: 'Parcours', navContact: 'Contact',
 
         heroStatus: 'Analyste de données chez iA Groupe financier · Montréal, QC',
-        heroTitle: 'Des pipelines de données sécurisés et testés, sur Azure&nbsp;et&nbsp;Snowflake.',
-        heroLead: 'Je suis Mathis, analyste de données à profil ingénierie, sur les plateformes de données clients et de centre de contact. Je m’occupe de ce qui rend la donnée fiable : gestion des secrets, masquage des données personnelles, tests automatisés et infrastructure bien dimensionnée.',
+        heroTitle: 'Des données fiables, pour décider en&nbsp;confiance.',
+        heroLead: 'Je suis Mathis, analyste de données chez iA Groupe financier. Derrière chaque tableau de bord et chaque modèle, il y a un flux de données : je construis ces flux, je protège les informations personnelles qu’ils contiennent et je les teste pour que les chiffres sur lesquels on s’appuie soient justes.',
         heroCta: 'Voir les réalisations',
 
         m1: 'de coût VM sur notre runtime d’intégration auto-hébergé, après une étude de capacité',
         m2: 'identifiant en clair restant dans la configuration des pipelines',
         m3: 'expériences en données entre la France, le Danemark et le Canada',
         m4: 'diplômes : maîtrise Polytechnique Montréal, ingénieur Télécom Physique Strasbourg',
+
+        fKicker: 'Projet vedette · à essayer',
+        fTitle: 'Où finiriez-vous au Marathon de Berlin ?',
+        fHook: 'Entrez votre temps et découvrez votre classement parmi 780 000 coureurs.',
+        fText: 'Un dashboard interactif construit sur 25 ans de résultats du Marathon de Berlin : records du monde, chaque édition à la loupe, la météo du jour de course, et qui court en tête.',
+        fCta: 'Essayer le dashboard ↗',
+        fCode: 'Code source',
 
         jTitle: 'Le parcours d’une donnée',
         jLead: 'Quatre étapes entre un système source et une décision. Mon rôle : rendre chacune fiable. Chaque étape renvoie à un projet concret plus bas.',
@@ -65,6 +72,7 @@
         before: 'avant', after: 'après',
 
         c1Tag: 'Sécurité · Azure Data Factory',
+        c1Plain: 'Plus aucun mot de passe en clair dans nos flux de données',
         c1Title: 'Migrer les identifiants des pipelines vers Azure Key Vault',
         c1P: 'Les pipelines ADF appelaient l’API de la plateforme de centre de contact avec des identifiants OAuth2 stockés directement dans les linked services, lisibles par toute personne ayant accès à la factory.',
         c1A: 'Migration de chaque identifiant vers Azure Key Vault. Les linked services référencent désormais des secrets résolus à l’exécution via l’identité de la factory : plus rien de sensible dans les définitions de pipelines ni dans le dépôt.',
@@ -72,6 +80,7 @@
         edgePlain: 'en clair', edgeRuntime: 'secret à l’exécution',
 
         c2Tag: 'Confidentialité · Snowflake',
+        c2Plain: 'Tester sur des données réalistes sans exposer un seul client',
         c2Title: 'Masquage des données personnelles piloté par configuration',
         c2P: 'Les développeurs ont besoin de données proches de la production pour tester, mais les conversations du centre de contact sont du JSON imbriqué rempli de noms, courriels et numéros de téléphone. Les copier en environnement de test exposait des données personnelles.',
         c2A: 'Conception d’un outil d’anonymisation configurable qui parcourt le JSON imbriqué et remplace les champs personnels. Les champs sensibles sont déclarés sous forme de règles, pas codés en dur : une nouvelle source demande de la configuration, pas du nouveau code.',
@@ -79,6 +88,7 @@
         c2Cap: 'Exemple illustratif, données fictives.',
 
         c3Tag: 'FinOps · Azure',
+        c3Plain: 'Même service, 30&nbsp;% moins cher : le serveur n’était pas en cause',
         c3Title: 'Redimensionner la VM du runtime d’intégration : −30 % de coût',
         c3P: 'La VM hébergeant notre runtime d’intégration auto-hébergé (SHIR) tournait sur une Standard_DS3_v2. Les pipelines subissaient de la latence : fallait-il monter en gamme, ou le goulot d’étranglement était-il ailleurs ?',
         c3A: 'Analyse de la mémoire, du CPU, des files d’attente API, de la concurrence et des réponses HTTP 429. La VM était loin de la saturation ; la latence venait de la concurrence des requêtes et du rate limiting de l’API. Ajustement de la concurrence ADF et validation progressive de DEV à PROD.',
@@ -88,6 +98,7 @@
         c3Cap: 'Coût VM/SHIR relatif sur le périmètre étudié. Déploiement : DEV → acceptation → PROD.',
 
         c4Tag: 'DevOps · Docs-as-code',
+        c4Plain: 'Une documentation qui se met à jour avec le code',
         c4Title: 'Un pipeline docs-as-code qui publie sur SharePoint',
         c4P: 'La documentation des tables était dispersée, rapidement obsolète, et plus personne ne lui faisait confiance.',
         c4A: 'Documentation déplacée en Markdown à côté des définitions de données, revue en pull request comme tout autre changement. Au merge, un pipeline Azure la publie sur le SharePoint de l’entreprise.',
@@ -101,9 +112,6 @@
         p2Text: 'Contribution à <code>datacontract-cli</code>, un CLI open source pour définir, valider et tester les contrats de données entre producteurs et consommateurs.',
         p3Title: 'Séries temporelles synthétiques avec des GAN',
         p3Text: 'Entraînement d’un réseau antagoniste génératif pour produire des séries temporelles synthétiques réalistes, puis évaluation de la qualité des échantillons et de la stabilité de l’entraînement.',
-        p4Title: 'Dashboard du Marathon de Berlin',
-        p4Text: 'Application web interactive sur 780 000 arrivées du Marathon de Berlin (1999–2023) : records du monde, simulateur qui classe votre propre temps, zoom sur chaque édition, météo et nationalités.',
-        p4Live: 'Démo en ligne',
         p4Note: 'Hébergement gratuit : la première visite peut prendre environ une minute, le temps de réveiller le serveur.',
 
         stackTitle: 'Stack',

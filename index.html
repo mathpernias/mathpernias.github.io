@@ -42,8 +42,8 @@
         <section class="hero wrap">
             <div class="hero-main">
                 <p class="status"><span class="status-dot"></span><span data-i18n="heroStatus">Data Analyst at iA Financial Group · Montréal, QC</span></p>
-                <h1 data-i18n="heroTitle">Secure, tested data pipelines on Azure&nbsp;and&nbsp;Snowflake.</h1>
-                <p class="lead" data-i18n="heroLead">I'm Mathis, a data analyst with an engineering focus, working on customer and contact-center data. I handle the parts that make data trustworthy: secrets management, PII masking, automated tests and right-sized infrastructure.</p>
+                <h1 data-i18n="heroTitle">Reliable data, so decisions can be&nbsp;trusted.</h1>
+                <p class="lead" data-i18n="heroLead">I'm Mathis, a data analyst at iA Financial Group. Behind every dashboard and every model there is a flow of data: I build those flows, protect the personal information in them, and test them so the numbers people rely on are right.</p>
                 <div class="actions">
                     <a href="#work" class="btn btn-solid" data-i18n="heroCta">Selected work</a>
                     <a href="mailto:mathis.pernias@gmail.com" class="btn btn-line">mathis.pernias@gmail.com</a>
@@ -74,6 +74,30 @@ mathis-pernias
                 <div><dt>5</dt><dd data-i18n="m3">data roles across France, Denmark and Canada</dd></div>
                 <div><dt>2</dt><dd data-i18n="m4">degrees: M.Eng. Polytechnique Montréal, Eng. Télécom Physique Strasbourg</dd></div>
             </dl>
+        </section>
+
+
+        <!-- ============ FEATURED ============ -->
+        <section id="featured" class="section wrap">
+            <article class="featured reveal">
+                <a class="featured-media media-link" href="https://berlinmarathondashboard.onrender.com/" target="_blank" rel="noopener noreferrer">
+                    <video class="media" autoplay muted loop playsinline preload="none" poster="berlin-dashboard.webp" aria-label="Tour of the Berlin Marathon dashboard">
+                        <source src="berlin-dashboard.webm" type="video/webm">
+                    </video>
+                </a>
+                <div class="featured-body">
+                    <p class="featured-kicker"><span class="section-num">★</span> <span data-i18n="fKicker">Featured project · try it</span></p>
+                    <h2 data-i18n="fTitle">Where would you finish in the Berlin Marathon?</h2>
+                    <p class="featured-hook" data-i18n="fHook">Enter your finish time and see where you'd rank among 780,000 runners.</p>
+                    <p data-i18n="fText">An interactive dashboard built on 25 years of Berlin Marathon results: world records, every edition up close, the weather on race day, and who runs at the front.</p>
+                    <div class="actions">
+                        <a href="https://berlinmarathondashboard.onrender.com/" class="btn btn-solid" target="_blank" rel="noopener noreferrer" data-i18n="fCta">Try the dashboard ↗</a>
+                        <a href="https://github.com/mathpernias/BerlinMarathonDashboard" class="btn btn-line" target="_blank" rel="noopener noreferrer" data-i18n="fCode">Source code</a>
+                    </div>
+                    <p class="link-note" data-i18n="p4Note">Free hosting: the first visit can take about a minute to wake the server.</p>
+                    <ul class="chips"><li>Python</li><li>Pandas</li><li>Dash</li><li>Plotly</li><li>Docker</li><li>Render</li></ul>
+                </div>
+            </article>
         </section>
 
         <!-- ============ DATA JOURNEY ============ -->
@@ -132,7 +156,8 @@ mathis-pernias
                 <div class="case-meta">
                     <span class="case-idx">A</span>
                     <p class="case-tag" data-i18n="c1Tag">Security · Azure Data Factory</p>
-                    <h3 data-i18n="c1Title">Moving pipeline credentials into Azure Key Vault</h3>
+                    <h3 data-i18n="c1Plain">No more passwords sitting in plain text in our data pipelines</h3>
+                    <p class="case-tech" data-i18n="c1Title">Moving pipeline credentials into Azure Key Vault</p>
                     <ul class="chips"><li>Azure Key Vault</li><li>Managed identity</li><li>OAuth2</li><li>ADF</li></ul>
                 </div>
                 <div class="case-body">
@@ -169,7 +194,8 @@ mathis-pernias
                 <div class="case-meta">
                     <span class="case-idx">B</span>
                     <p class="case-tag" data-i18n="c2Tag">Privacy · Snowflake</p>
-                    <h3 data-i18n="c2Title">Config-driven PII masking for test environments</h3>
+                    <h3 data-i18n="c2Plain">Testing on realistic data without exposing a single customer</h3>
+                    <p class="case-tech" data-i18n="c2Title">Config-driven PII masking for test environments</p>
                     <ul class="chips"><li>Snowflake</li><li>SQL</li><li>Nested JSON</li><li>Data privacy</li></ul>
                 </div>
                 <div class="case-body">
@@ -210,7 +236,8 @@ mathis-pernias
                 <div class="case-meta">
                     <span class="case-idx">C</span>
                     <p class="case-tag" data-i18n="c3Tag">FinOps · Azure</p>
-                    <h3 data-i18n="c3Title">Right-sizing the integration runtime VM: −30% cost</h3>
+                    <h3 data-i18n="c3Plain">Same service, 30% cheaper: the server was never the problem</h3>
+                    <p class="case-tech" data-i18n="c3Title">Right-sizing the integration runtime VM: −30% cost</p>
                     <ul class="chips"><li>Azure VMs</li><li>Self-hosted IR</li><li>ADF</li><li>Capacity analysis</li></ul>
                 </div>
                 <div class="case-body">
@@ -249,7 +276,8 @@ mathis-pernias
                 <div class="case-meta">
                     <span class="case-idx">D</span>
                     <p class="case-tag" data-i18n="c4Tag">DevOps · Docs-as-code</p>
-                    <h3 data-i18n="c4Title">A docs-as-code pipeline that publishes to SharePoint</h3>
+                    <h3 data-i18n="c4Plain">Documentation that updates itself with the code</h3>
+                    <p class="case-tech" data-i18n="c4Title">A docs-as-code pipeline that publishes to SharePoint</p>
                     <ul class="chips"><li>Azure Pipelines</li><li>Markdown</li><li>PowerShell</li><li>Git</li></ul>
                 </div>
                 <div class="case-body">
@@ -304,21 +332,6 @@ mathis-pernias
                     <h3 data-i18n="p3Title">Synthetic time series with GANs</h3>
                     <p data-i18n="p3Text">Trained a generative adversarial network to produce realistic synthetic time series, and evaluated sample quality and training stability.</p>
                     <ul class="chips"><li>PyTorch</li><li>GAN</li><li>Deep learning</li></ul>
-                </article>
-
-                <article class="project reveal">
-                    <p class="project-meta"><span data-i18n="personal">Personal</span><span>Dash</span></p>
-                    <h3 data-i18n="p4Title">Berlin Marathon dashboard</h3>
-                    <a class="media-link" href="https://berlinmarathondashboard.onrender.com/" target="_blank" rel="noopener noreferrer">
-                        <video class="media" autoplay muted loop playsinline preload="none" poster="berlin-dashboard.webp" aria-label="Tour of the Berlin Marathon dashboard">
-                            <source src="berlin-dashboard.webm" type="video/webm">
-                        </video>
-                    </a>
-                    <p data-i18n="p4Text">Interactive web app on 780,000 Berlin Marathon finishes (1999–2023): world records, a race simulator that ranks your own time, edition deep-dives, weather and nationalities.</p>
-                    <ul class="chips"><li>Python</li><li>Dash</li><li>Plotly</li><li>Docker</li><li>Render</li></ul>
-                    <a class="link link-live" href="https://berlinmarathondashboard.onrender.com/" target="_blank" rel="noopener noreferrer"><span data-i18n="p4Live">Live demo</span> · berlinmarathondashboard.onrender.com ↗</a>
-                    <p class="link-note" data-i18n="p4Note">Free hosting: the first visit can take about a minute to wake the server.</p>
-                    <a class="link" href="https://github.com/mathpernias/BerlinMarathonDashboard" target="_blank" rel="noopener noreferrer">github.com/mathpernias/BerlinMarathonDashboard ↗</a>
                 </article>
             </div>
         </section>
