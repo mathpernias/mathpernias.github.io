@@ -37,13 +37,129 @@
         document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
     }
 
+
+    /* ---------- Polish: scroll progress, cursor halo, count-up, data-journey orb ---------- */
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const bar = document.querySelector('.scroll-progress');
+    if (bar) {
+        let queued = false;
+        const paint = () => {
+            queued = false;
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+        };
+        window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(paint); } }, { passive: true });
+        window.addEventListener('resize', paint);
+        paint();
+    }
+
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.querySelectorAll('.case, .project, .featured, .eucor, .pr').forEach(el => {
+            el.classList.add('halo');
+            el.addEventListener('pointermove', e => {
+                const r = el.getBoundingClientRect();
+                el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+                el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+            });
+        });
+    }
+
+    const counters = [...document.querySelectorAll('.metrics dt')].map(el => {
+        const m = el.textContent.trim().match(/^([−-]?)(\d+)(.*)$/);
+        return m && { el, sign: m[1], to: +m[2], suffix: m[3] };
+    }).filter(Boolean);
+    if (counters.length && !reduce && 'IntersectionObserver' in window) {
+        const ease = x => 1 - Math.pow(1 - x, 3);
+        const run = (c, delay) => {
+            const from = c.to === 0 ? 9 : 0, dur = 1100;
+            c.el.textContent = (from ? '' : c.sign) + from + c.suffix;
+            setTimeout(() => {
+                const t0 = performance.now();
+                const step = now => {
+                    const p = Math.min(1, (now - t0) / dur);
+                    const v = Math.round(from + (c.to - from) * ease(p));
+                    c.el.textContent = (v ? c.sign : '') + v + c.suffix;
+                    if (p < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+            }, delay);
+        };
+        const cio = new IntersectionObserver(entries => {
+            if (entries.some(e => e.isIntersecting)) {
+                counters.forEach((c, i) => run(c, i * 130));
+                cio.disconnect();
+            }
+        }, { threshold: 0.4 });
+        cio.observe(counters[0].el.closest('.metrics'));
+    }
+
+    const journey = document.querySelector('.journey');
+    if (journey && !reduce && 'IntersectionObserver' in window) {
+        const stages = [...journey.querySelectorAll('.stage')];
+        const orb = document.createElement('span');
+        const fill = document.createElement('span');
+        orb.className = 'journey-orb'; fill.className = 'journey-fill';
+        orb.setAttribute('aria-hidden', 'true'); fill.setAttribute('aria-hidden', 'true');
+        journey.append(fill, orb);
+        let visible = false, running = false;
+
+        const geometry = () => {
+            const jr = journey.getBoundingClientRect();
+            const pts = stages.map(st => {
+                const r = st.querySelector('.stage-dot').getBoundingClientRect();
+                return { x: r.left + r.width / 2 - jr.left, y: r.top + r.height / 2 - jr.top };
+            });
+            const vertical = Math.abs(pts[pts.length - 1].x - pts[0].x) < 4;
+            return { pts, vertical };
+        };
+        const ease = x => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+
+        const cycle = () => {
+            if (!visible) { running = false; return; }
+            running = true;
+            const { pts, vertical } = geometry();
+            const a = pts[0], b = pts[pts.length - 1];
+            const lit = new Set();
+            const dur = 4200, t0 = performance.now();
+            orb.classList.add('on');
+            const frame = now => {
+                const p = Math.min(1, (now - t0) / dur), e = ease(p);
+                const x = a.x + (b.x - a.x) * e, y = a.y + (b.y - a.y) * e;
+                orb.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+                if (vertical) Object.assign(fill.style, { left: (a.x - 1) + 'px', top: a.y + 'px', width: '2px', height: (y - a.y) + 'px' });
+                else Object.assign(fill.style, { left: a.x + 'px', top: (a.y - 1) + 'px', width: (x - a.x) + 'px', height: '2px' });
+                fill.style.opacity = '1';
+                pts.forEach((pt, i) => {
+                    const reached = vertical ? y >= pt.y - 2 : x >= pt.x - 2;
+                    if (reached && !lit.has(i)) {
+                        lit.add(i);
+                        stages[i].classList.add('lit');
+                        setTimeout(() => stages[i].classList.remove('lit'), i === pts.length - 1 ? 1600 : 1100);
+                    }
+                });
+                if (p < 1) requestAnimationFrame(frame);
+                else {
+                    orb.classList.remove('on');
+                    fill.style.opacity = '0';
+                    setTimeout(cycle, 1500);
+                }
+            };
+            requestAnimationFrame(frame);
+        };
+        new IntersectionObserver(entries => {
+            visible = entries[0].isIntersecting;
+            if (visible && !running) setTimeout(cycle, 400);
+        }, { threshold: 0.35 }).observe(journey);
+    }
+
     /* ---------- i18n ----------
        English lives in the HTML. French overrides below, keyed by data-i18n. */
     const fr = {
         navWork: 'Réalisations', navProjects: 'Projets', navStack: 'Stack', navExperience: 'Parcours', navContact: 'Contact', navSport: 'Sport',
 
         heroStatus: 'Analyste de données chez iA Groupe financier · Montréal, QC',
-        heroTitle: 'Des données fiables, pour décider en&nbsp;confiance.',
+        heroTitle: 'Des données <span class="nw"><em>fiables</em>,</span> pour décider en&nbsp;confiance.',
         heroLead: 'Je suis Mathis, analyste de données chez iA Groupe financier. Derrière chaque tableau de bord et chaque modèle, il y a un flux de données : je construis ces flux, je protège les informations personnelles qu’ils contiennent et je les teste pour que les chiffres sur lesquels on s’appuie soient justes.',
         termStatus: 'disponible', cmdProjects: 'projets', termInputLabel: 'Tape une commande, par exemple help',
         heroCta: 'Voir les réalisations',
@@ -54,20 +170,20 @@
         m4: 'diplômes : maîtrise Polytechnique Montréal, ingénieur Télécom Physique Strasbourg',
 
         fKicker: 'Projet vedette · à essayer',
-        fTitle: 'Où finiriez-vous au Marathon de Berlin ?',
+        fTitle: 'Où finiriez-<em>vous</em> au Marathon de Berlin&nbsp;?',
         fHook: 'Entrez votre temps et découvrez votre classement parmi 780 000 coureurs.',
         fText: 'Un dashboard interactif construit sur 25 ans de résultats du Marathon de Berlin : records du monde, chaque édition à la loupe, la météo du jour de course, et qui court en tête.',
         fCta: 'Essayer le dashboard ↗',
         fCode: 'Code source',
 
-        jTitle: 'Le parcours d’une donnée',
+        jTitle: 'Le <em>parcours</em> d’une donnée',
         jLead: 'Quatre étapes entre un système source et une décision. Mon rôle : rendre chacune fiable. Chaque étape renvoie à un projet concret plus bas.',
         jCollect: 'Collecter', jCollectText: 'Extraire les données des applications, API et fichiers, selon un calendrier, sans surcharger personne.', jCollectLink: 'cas C : dimensionner l’ingestion →',
         jProtect: 'Protéger', jProtectText: 'Les secrets restent dans un coffre ; les données personnelles sont masquées avant de quitter la production.', jProtectLink: 'cas A et B : secrets, données personnelles →',
         jVerify: 'Vérifier', jVerifyText: 'Tests automatisés et contrats de données détectent les erreurs avant les utilisateurs.', jVerifyLink: 'datacontract-cli →',
         jDeliver: 'Valoriser', jDeliverText: 'Des modèles propres et documentés qui alimentent tableaux de bord, rapports et ML.', jDeliverLink: 'cas D : docs-as-code →',
 
-        workTitle: 'Réalisations',
+        workTitle: '<em>Réalisations</em>',
         workLead: 'Quatre projets issus de mon travail chez iA Groupe financier : contexte, approche, résultat.',
         lblProblem: 'Problème', lblApproach: 'Approche', lblOutcome: 'Résultat',
         before: 'avant', after: 'après',
@@ -106,7 +222,7 @@
         c4A: 'Documentation déplacée en Markdown à côté des définitions de données, revue en pull request comme tout autre changement. Au merge, un pipeline Azure la publie sur le SharePoint de l’entreprise.',
         c4O: 'Une source de vérité unique, synchronisée avec le code. Preuve de concept aujourd’hui, prête à être étendue à d’autres équipes.',
 
-        projTitle: 'Autres projets',
+        projTitle: 'Autres <em>projets</em>',
         projLead: 'Stages, open source et recherche.',
         research: 'Recherche', personal: 'Personnel',
         p1Title: 'Chatbot RAG sur des données de couverture des médicaments',
@@ -122,12 +238,12 @@
         gNoise: 'bruit z', gGen: 'Générateur', gFake: 'synthétique', gReal: 'réelle',
         gDisc: 'Discriminateur', gVerdict: 'vrai ou faux ?', gLoop: 'rétroaction · perte adverse',
 
-        stackTitle: 'Stack',
+        stackTitle: '<em>Stack</em>',
         stackLead: 'Ce que j’utilise au quotidien, regroupé par usage.',
         s1: 'Ingestion et orchestration', s2: 'Entrepôt et modélisation', s3: 'Infrastructure et DevOps',
         s4: 'Qualité et gouvernance', s5: 'Sécurité et confidentialité', s6: 'Langages et analytique',
 
-        expTitle: 'Parcours',
+        expTitle: '<em>Parcours</em>',
         d1: 'Août 2026 — auj.', d2: 'Mai — août 2026', d3: 'Mai — août 2025', d4: 'Mai — août 2024', d5: 'Juin 2023',
         r1: 'Analyste de données',
         r1Text: 'Plateformes de données clients et de centre de contact. Pipelines sécurisés et fiables, qualité des données.',
@@ -152,8 +268,8 @@
         e1Text: 'Maîtrise professionnelle, orientation ingénierie et analytique des données.',
         e2: 'Diplôme d’ingénieur, science des données et IA',
 
-        contactTitle: 'Parlons données.',
-        sportTitle: 'Hors du bureau : l’endurance',
+        contactTitle: 'Parlons <span class="nw"><em>données</em>.</span>',
+        sportTitle: 'Hors du bureau : l’<em>endurance</em>',
         sportLead: 'La course et le vélo, c’est ma façon de recharger les batteries, et sans doute l’origine de ma manie de tout mesurer.',
         pr10: 'Classique Parc La Fontaine · 14ᵉ',
         prHalf: 'Semi-marathon',

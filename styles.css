@@ -292,21 +292,10 @@ html.techno.kick .hero h1, html.techno.kick .term, html.techno.kick .section-hea
     content: ''; position: absolute; left: 24px; right: 24px; top: var(--track); height: 1px;
     background: linear-gradient(90deg, var(--line-2), var(--line-2) 60%, color-mix(in srgb, var(--ok) 60%, var(--line-2)));
 }
-.journey::after {
-    content: ''; position: absolute; top: calc(var(--track) - 3px); left: 24px;
-    width: 28px; height: 7px; border-radius: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent));
-    animation: packet 5s cubic-bezier(.6, 0, .4, 1) infinite;
-}
-@keyframes packet {
-    0%   { left: 24px; opacity: 0; }
-    8%   { opacity: 1; }
-    92%  { opacity: 1; }
-    100% { left: calc(100% - 52px); opacity: 0; }
-}
 .stage { position: relative; padding: 44px 24px 26px; display: flex; flex-direction: column; gap: 10px; }
 .stage + .stage { border-left: 1px solid var(--line); }
 .stage-dot {
+    transition: transform .35s ease, box-shadow .35s ease, background-color .35s ease, border-color .35s ease;
     position: absolute; top: calc(var(--track) - 5px); left: 24px; width: 11px; height: 11px; border-radius: 50%;
     background: var(--bg-2); border: 1.5px solid var(--text-3); z-index: 1;
 }
@@ -325,22 +314,11 @@ html.techno.kick .hero h1, html.techno.kick .term, html.techno.kick .section-hea
         left: 29px; right: auto; top: 30px; bottom: 30px; width: 1px; height: auto;
         background: linear-gradient(180deg, var(--line-2), var(--line-2) 60%, color-mix(in srgb, var(--ok) 60%, var(--line-2)));
     }
-    .journey::after {
-        left: 26px; top: 30px; width: 7px; height: 28px;
-        background: linear-gradient(180deg, transparent, var(--accent)); animation-name: packet-v;
-    }
     .stage { padding: 22px 20px 22px 56px; }
     .stage + .stage { border-left: 0; border-top: 1px solid var(--line); }
     .stage-dot { top: 26px; left: 24px; }
     .stage > p.stage-tech { margin-top: 0; }
 }
-@keyframes packet-v {
-    0%   { top: 30px; opacity: 0; }
-    8%   { opacity: 1; }
-    92%  { opacity: 1; }
-    100% { top: calc(100% - 58px); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) { .journey::after { display: none; } }
 
 /* ---------- Case studies ---------- */
 .case {
@@ -643,3 +621,50 @@ html.techno.kick .hero h1, html.techno.kick .term, html.techno.kick .section-hea
 @media (prefers-reduced-motion: reduce) {
     .js .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---------- Polish ---------- */
+.nw { white-space: nowrap; }
+h1 em, h2 em {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400;
+    letter-spacing: -0.01em; font-size: 1.1em; line-height: 0.9;
+}
+h1 em { color: var(--accent); }
+
+.scroll-progress {
+    position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 200; pointer-events: none;
+    transform: scaleX(0); transform-origin: 0 50%;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 55%, transparent), var(--accent));
+    box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.halo { position: relative; }
+.halo::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+    opacity: 0; transition: opacity .35s ease;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%),
+        color-mix(in srgb, var(--accent) 11%, transparent), transparent 65%);
+}
+.halo:hover::before { opacity: 1; }
+.halo > * { position: relative; z-index: 1; }
+.project.halo > .project-fig { z-index: 1; }
+
+.journey-orb {
+    position: absolute; left: 0; top: 0; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+    background: #fff; z-index: 3; pointer-events: none; opacity: 0; transition: opacity .3s ease;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent), 0 0 18px 5px var(--accent);
+}
+.journey-orb.on { opacity: 1; }
+.journey-fill {
+    position: absolute; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .5s ease;
+    background: linear-gradient(90deg, transparent, var(--accent));
+    box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+@media (max-width: 900px) { .journey-fill { background: linear-gradient(180deg, transparent, var(--accent)); } }
+.stage h3 { transition: color .35s ease; }
+.stage.lit .stage-dot {
+    transform: scale(1.5); border-color: var(--accent); background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft), 0 0 16px var(--accent);
+}
+.stage.lit:last-child .stage-dot { border-color: var(--ok); background: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft), 0 0 16px var(--ok); }
+.stage.lit h3 { color: var(--accent); }
+.stage.lit:last-child h3 { color: var(--ok); }
