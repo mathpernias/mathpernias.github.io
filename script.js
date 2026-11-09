@@ -167,6 +167,10 @@
         eucorDays: '3 pays',
         stravaCta: 'Me suivre sur Strava ↗',
         eucorCap: 'Tracé dessiné à partir de mes traces GPS Strava.',
+        trailAlt: 'Lac à Saint-Alexis-des-Monts, au Québec, au départ du trail Chute du Diable 50 km',
+        trailCap: 'Saint-Alexis-des-Monts, Québec · au départ · 2026',
+        eucorAlt: 'Vallée verdoyante du Jura avec un vélo de route dans l’herbe, pendant le Tour EUCOR',
+        eucorPhotoCap: 'Jour 3, le Jura entre Mulhouse et Bâle · 2023',
         cityBasel: 'Bâle', cityFreiburg: 'Fribourg',
         contactText: 'Toujours partant pour échanger sur l’ingénierie des données, les plateformes data ou l’IA appliquée. Le courriel est le moyen le plus rapide de me joindre.'
     };
