@@ -392,6 +392,38 @@ code { font-family: var(--mono); font-size: 0.88em; color: var(--text); backgrou
     .featured { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 20px; }
 }
 
+/* ---------- Sport ---------- */
+.prs {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.pr { background: var(--bg); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px; }
+.pr dt { font: 0.76rem var(--mono); color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; }
+.pr-time { font: 600 clamp(1.7rem, 3vw, 2.2rem)/1.1 var(--mono); letter-spacing: -0.02em; color: var(--text); font-variant-numeric: tabular-nums; }
+.pr-trail .pr-time { color: var(--accent); }
+.pr-meta { font-size: 0.82rem; color: var(--text-2); }
+.eucor {
+    margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; align-items: center;
+    padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2);
+}
+.eucor-body { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.eucor h3 { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; text-wrap: balance; }
+.eucor-body > p:not(.case-tag) { color: var(--text-2); }
+.eucor-stats { display: flex; flex-wrap: wrap; gap: 28px; margin: 4px 0 6px; }
+.eucor-stats dt { font: 600 1.35rem var(--mono); color: var(--text); }
+.eucor-stats dd { font-size: 0.8rem; color: var(--text-3); }
+.eucor-fig { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.eucor-map { width: 100%; max-width: 320px; height: auto; }
+.map-route { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.map-city { fill: var(--bg); stroke: var(--text); stroke-width: 1.5; }
+.map-label { font: 9px var(--mono); fill: var(--text-2); }
+.eucor-fig figcaption { font: 0.72rem var(--mono); color: var(--text-3); text-align: center; }
+@media (max-width: 900px) {
+    .prs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .eucor { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 20px; }
+}
+@media (max-width: 460px) { .prs { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- Projects ---------- */
 .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .project { background: var(--bg); padding: 28px; display: flex; flex-direction: column; gap: 14px; }

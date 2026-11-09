@@ -40,7 +40,7 @@
     /* ---------- i18n ----------
        English lives in the HTML. French overrides below, keyed by data-i18n. */
     const fr = {
-        navWork: 'Réalisations', navProjects: 'Projets', navStack: 'Stack', navExperience: 'Parcours', navContact: 'Contact',
+        navWork: 'Réalisations', navProjects: 'Projets', navStack: 'Stack', navExperience: 'Parcours', navContact: 'Contact', navSport: 'Sport',
 
         heroStatus: 'Analyste de données chez iA Groupe financier · Montréal, QC',
         heroTitle: 'Des données fiables, pour décider en&nbsp;confiance.',
@@ -145,6 +145,22 @@
         e2: 'Diplôme d’ingénieur, science des données et IA',
 
         contactTitle: 'Parlons données.',
+        sportTitle: 'Hors du bureau : l’endurance',
+        sportLead: 'La course et le vélo, c’est ma façon de recharger les batteries, et sans doute l’origine de ma manie de tout mesurer.',
+        pr10: 'Classique Parc La Fontaine · 14ᵉ',
+        prHalf: 'Semi-marathon',
+        prHalfRace: 'Semi-marathon de Lachine',
+        prTrail: 'Chute du Diable · 1&nbsp;609 m D+ · 14ᵉ au général',
+        eucorTag: 'Vélo · Rhin supérieur · 2023',
+        eucorTitle: 'Tour EUCOR : cinq jours, cinq universités, à vélo',
+        eucorText: 'Un périple reliant les universités du réseau EUCOR entre la France, l’Allemagne et la Suisse : Karlsruhe, Strasbourg, Mulhouse, Bâle et Fribourg, à plus de 100 km par jour.',
+        eucorKm: 'parcourus',
+        eucorDplus: 'de dénivelé positif',
+        eucorDaysVal: '5 jours',
+        eucorDays: '3 pays',
+        stravaCta: 'Me suivre sur Strava ↗',
+        eucorCap: 'Tracé dessiné à partir de mes traces GPS Strava.',
+        cityBasel: 'Bâle', cityFreiburg: 'Fribourg',
         contactText: 'Toujours partant pour échanger sur l’ingénierie des données, les plateformes data ou l’IA appliquée. Le courriel est le moyen le plus rapide de me joindre.'
     };
 
