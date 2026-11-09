@@ -110,9 +110,15 @@
         p1Title: 'Chatbot RAG sur des données de couverture des médicaments',
         p1Text: 'Assistant interne qui répond aux questions sur les données publiques de couverture des médicaments grâce au RAG (retrieval-augmented generation) : des réponses en quelques secondes plutôt qu’en fouillant les tables.',
         p2Text: 'Contribution à <code>datacontract-cli</code>, un CLI open source pour définir, valider et tester les contrats de données entre producteurs et consommateurs.',
+        dgQs: 'en mots simples', dgRet: 'Recherche', dgRets: 'passages pertinents',
+        dgLLMs: 'avec le contexte', dgAns: 'Réponse', dgAnss: 'avec sources',
+        dgDocs: 'données de couverture · Snowflake',
         p3Title: 'Séries temporelles synthétiques avec des GAN',
         p3Text: 'Entraînement d’un réseau antagoniste génératif pour produire des séries temporelles synthétiques réalistes, puis évaluation de la qualité des échantillons et de la stabilité de l’entraînement.',
         p4Note: 'Hébergement gratuit : la première visite peut prendre environ une minute, le temps de réveiller le serveur.',
+
+        gNoise: 'bruit z', gGen: 'Générateur', gFake: 'synthétique', gReal: 'réelle',
+        gDisc: 'Discriminateur', gVerdict: 'vrai ou faux ?', gLoop: 'rétroaction · perte adverse',
 
         stackTitle: 'Stack',
         stackLead: 'Ce que j’utilise au quotidien, regroupé par usage.',
