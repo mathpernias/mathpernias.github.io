@@ -158,10 +158,11 @@
     const fr = {
         navWork: 'Réalisations', navProjects: 'Projets', navStack: 'Stack', navExperience: 'Parcours', navContact: 'Contact', navSport: 'Sport',
 
+        srcAria: 'Sources de données', srcApps: 'applications', srcApis: 'API', srcFiles: 'fichiers',
         heroStatus: 'Analyste de données chez iA Groupe financier · Montréal, QC',
         heroTitle: 'Des données <span class="nw"><em>fiables</em>,</span> pour décider en&nbsp;confiance.',
         heroLead: 'Je suis Mathis, analyste de données chez iA Groupe financier. Derrière chaque tableau de bord et chaque modèle, il y a un flux de données : je construis ces flux, je protège les informations personnelles qu’ils contiennent et je les teste pour que les chiffres sur lesquels on s’appuie soient justes.',
-        termStatus: 'disponible', cmdProjects: 'projets', termInputLabel: 'Tape une commande, par exemple help',
+        cmdProjects: 'projets', termInputLabel: 'Tape une commande, par exemple help',
         heroCta: 'Voir les réalisations',
 
         m1: 'de coût VM sur notre runtime d’intégration auto-hébergé, après une étude de capacité',
